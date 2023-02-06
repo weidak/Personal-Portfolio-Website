@@ -1,5 +1,15 @@
-import { Box, Button, Flex, Heading, Input, useColorMode, useColorModeValue } from "@chakra-ui/react"
-import { useState } from "react";
+import About from "@/components/about";
+import Card from "@/components/card";
+import Introduction from "@/components/introduction";
+import Navbar from "@/components/navbar";
+import ScrollIndicator from "@/components/scrollindicator";
+import { 
+  Box, 
+  useColorMode, 
+  useColorModeValue, 
+  Container, 
+} from "@chakra-ui/react"
+import { useEffect, useRef, useState } from "react";
 import { IoSunny, IoMoon } from "react-icons/io5"
 
 export default function Home() {
@@ -9,58 +19,38 @@ export default function Home() {
   const [toggle, setToggle] = useState(false);
 
   //Form your own colour schemes
-  const formBackground = useColorModeValue("gray.100", "gray.700");
+  const formBackground = useColorModeValue("gray.50", "gray.900");
 
   return (
-    <Flex 
-      height={"100vh"}
-      alignItems={"center"}
-      justifyContent={"center"}
-    >
-      <Flex
-        direction={"column"}
-        background={formBackground}
-        p={12}
-        rounded={6}
-        position={"relative"}
+    <>
+    <Navbar formBackground={formBackground} />
+    <Container
+        alignItems={"center"}
+        justifyContent={"center"}
+        maxWidth="20xl"
       >
-        <Heading
-          mb={6}
-        >
-          Card 1
-        </Heading>
-
-        <Input 
-          placeholder="Email" 
-          variant={"outline"}
-          mb={3}
-          type="email"
-        />
-
-        <Input 
-          placeholder="Password" 
-          variant={"outline"}
-          mb={3}
-          type="password"
-        />
-
-        <Button colorScheme={"teal"}>
-          Submit
-        </Button>
-
-        <Box
-          position={"absolute"}
-          top={2}
-          right={2}
-          cursor={"pointer"}
-          onClick={() => {
-            toggleColorMode();
-            setToggle(!toggle);
-          }}
-        >
-          {toggle ? <IoMoon/> : <IoSunny/>}
-        </Box>
-      </Flex>
-    </Flex>
+        <Introduction/>      
+        <About/>  
+        <Card formBackground={formBackground}/>
+        <Toggle/>
+    </Container>
+    </>
   )
+
+  function Toggle() {
+    return (
+      <Box
+        position={"fixed"}
+        top={"10vh"}
+        right={2}
+        cursor={"pointer"}
+        onClick={() => {
+          toggleColorMode();
+          setToggle(!toggle);
+        } }
+      >
+        {toggle ? <IoMoon /> : <IoSunny />}
+      </Box>
+    );
+  }
 }
