@@ -27,19 +27,19 @@ export default function Navbar({formBackground}: any) {
     const navData = [
         {
           label: "About",
-          link: "dummy",
+          link: "#about",
         },
         {
           label: "Experience",
-          link: "dummy",
+          link: "#experience",
         },
         {
           label: "Projects",
-          link: "dummy",
+          link: "#projects",
         },
         {
           label: "Contact",
-          link: "dummy",
+          link: "#contact",
         },
     ]
 
@@ -55,7 +55,7 @@ export default function Navbar({formBackground}: any) {
                         <Flex justify="space-between" flex="1">
                             <ButtonGroup variant="link" spacing="8">
                                 {navData.map((item, i) => (
-                                    <Button key={i}> {item.label} </Button>
+                                    <Link key={i} href={item.link}> {item.label} </Link>
                                 ))}
                             </ButtonGroup>
                         </Flex>

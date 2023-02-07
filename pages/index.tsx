@@ -8,6 +8,7 @@ import {
   useColorMode, 
   useColorModeValue, 
   Container, 
+  Stack
 } from "@chakra-ui/react"
 import { useState } from "react";
 import { IoSunny, IoMoon } from "react-icons/io5"
@@ -29,10 +30,13 @@ export default function Home() {
         alignItems={"cetner"}
         justifyContent={"center"}
         flexDirection={"column"}
+        pt="20vh"
       >
-        <Introduction/>      
-        <About/>  
-        <Card formBackground={formBackground}/>
+        <Stack spacing={20}>
+          <Introduction/>      
+          <About/>  
+          <Card formBackground={formBackground}/>
+        </Stack>
         <Toggle/>
     </Container>
     </>
