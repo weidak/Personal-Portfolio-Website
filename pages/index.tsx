@@ -9,7 +9,7 @@ import {
   useColorModeValue, 
   Container, 
 } from "@chakra-ui/react"
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 import { IoSunny, IoMoon } from "react-icons/io5"
 
 export default function Home() {
@@ -25,9 +25,10 @@ export default function Home() {
     <>
     <Navbar formBackground={formBackground} />
     <Container
-        alignItems={"center"}
+        maxWidth="90%"
+        alignItems={"cetner"}
         justifyContent={"center"}
-        maxWidth="20xl"
+        flexDirection={"column"}
       >
         <Introduction/>      
         <About/>  
