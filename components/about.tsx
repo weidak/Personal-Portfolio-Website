@@ -1,10 +1,10 @@
-import { Box, Container, HStack, Text, Heading, VStack } from "@chakra-ui/react";
+import { Box, Flex, Text, Heading, VStack } from "@chakra-ui/react";
 
 export default function About() {
     return (
-        <Container as="section" id="about">
-          <HStack p="10px">
-            <VStack width="70%" >
+        <Box as="section" id="about" top="-20vh">
+          <Flex justify="center" >
+            <VStack width={["90%", "70%", "50%", "30%"]}>
                 <Heading as="h2" size="lg">
                     About Me
                 </Heading>
@@ -17,10 +17,9 @@ export default function About() {
                     </Text>
                 </VStack>
             </VStack>
-            <Box w="30%">
-                {/* Logo or Some filler here */}
-            </Box>
-          </HStack>
-        </Container>
+            {/* <Box>
+            </Box> */}
+          </Flex>
+        </Box>
         );
 }

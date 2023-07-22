@@ -7,18 +7,24 @@ import {
     Image,
     Flex,
     ButtonGroup,
-    Button,
     IconButton,
     useDisclosure,
     Drawer,
     DrawerContent,
-    Link
+    Link,
+    Button,
 } from "@chakra-ui/react";
-import { useRef } from "react";
+import { useRef, useEffect, useState } from "react";
 import { FiMenu } from 'react-icons/fi'
 
-export default function Navbar({formBackground}: any) {
-    const isDesktop = useBreakpointValue({ base: false, lg: true})
+interface NavBarProps {
+    formBackground: any,
+    toggle: boolean
+}
+
+// export default function Navbar({formBackground}: any, {toggle}: Toggle)  {
+    export default function Navbar(props: NavBarProps)  {
+    const isDesktop = useBreakpointValue({ base: false, lg: true});
 
     // Drawer related properties
     const { isOpen, onOpen, onClose } = useDisclosure();
@@ -45,12 +51,16 @@ export default function Navbar({formBackground}: any) {
 
     return (
         <Box 
-            as="section" position="fixed" width={"100%"} background={formBackground}
+            as="nav" position="fixed" width={"100%"} background={props.formBackground} zIndex="sticky"
         >
-           <Box as="nav" bg="bg-surface" boxShadow="sm">
+           <Box bg="bg-surface" boxShadow="sm">
                 <Container py={{ base: '4', lg: '5'}}>
-                    <HStack spacing="10" justify="space-between">
-                    <Image src="https://i.imgur.com/gKJSU0D.png" boxSize={"5"}/>
+                    <HStack spacing="10" justify="space-between">\
+                    { props.toggle ? (
+                        <Image src="https://i.imgur.com/VhIvSNs.png" width={"70px"}/>
+                    ) : (
+                        <Image src="https://i.imgur.com/zH4cvJv.png" width={"70px"}/>
+                    )}                    
                     { isDesktop ? (
                         <Flex justify="space-between" flex="1">
                             <ButtonGroup variant="link" spacing="8">
@@ -78,7 +88,7 @@ export default function Navbar({formBackground}: any) {
                                 <DrawerContent>
                                     <Stack spacing="1vh" pt="2vh">
                                         {navData.map((item, i) => (
-                                            <Button key={i} w="100%"> {item.label} </Button>
+                                            <Link key={i} href={item.link}> <Button w="100%">{item.label} </Button></Link>
                                         ))}
                                     </Stack>
                                 </DrawerContent>
