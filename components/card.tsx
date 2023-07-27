@@ -1,6 +1,11 @@
 import { Box, Button, Flex, Heading, Input } from "@chakra-ui/react";
 
-export default function Card(formBackground: any) {
+interface CardProps {
+  theme: any;
+  formBackground: any;
+}
+
+const Card: React.FC<CardProps> = ({ theme, formBackground }) => {
 
 
     return (
@@ -11,13 +16,14 @@ export default function Card(formBackground: any) {
         >
           <Flex
             direction={"column"}
-            background={formBackground}
+            // background={t}
             p={12}
             rounded={6}
             position={"relative"}
           >
             <Heading
               mb={6}
+              color={theme.fontColor}
             >
               Card 1
             </Heading>
@@ -34,10 +40,12 @@ export default function Card(formBackground: any) {
               mb={3}
               type="password" />
     
-            <Button colorScheme={"teal"}>
+            <Button colorScheme={"blue"}>
               Submit
             </Button>
           </Flex>
         </Flex>
         );
 }
+
+export default Card;
