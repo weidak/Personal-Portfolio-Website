@@ -1,111 +1,99 @@
-import { Card, CardHeader, Flex, Text, CardBody, useColorModeValue, Box, Icon, VStack } from "@chakra-ui/react";
+import { Card, CardHeader, Flex, Text, CardBody, useColorModeValue, Box, Icon, VStack, Stack } from "@chakra-ui/react";
 import { AddIcon, ChatIcon, DownloadIcon, CheckIcon } from "@chakra-ui/icons";
+import { LiaUniversitySolid, LiaBookSolid } from "react-icons/lia"
+import { SiAutodesk } from "react-icons/si"
+import { BsPersonWorkspace } from "react-icons/bs"
+import TimelineRow from "./timelinerow";
 
-interface TimelineRowProps {
-  logo: React.ElementType;
-  title: string;
-  date: string;
-  color: string;
-  index: number;
-  arrLength: number;
+interface TimelineProps {
+    fontColor: string,
+    timelineTitle: string,
+    timelineData: {
+        logo: any, 
+        title: string,
+        date: string,
+        color: string
+        description: string,
+    }[],
 }
 
-const TimelineRow: React.FC<TimelineRowProps> = ({ logo, title, date, color, index, arrLength }) => {
-	const textColor = useColorModeValue('gray.700', 'white.300');
-	const bgIconColor = useColorModeValue('white.300', 'gray.700');
-
-	return (
-		<Flex alignItems='flex-start' justifyContent='start' mb='5px'>
-			<Flex direction='column'>
-				<Icon
-					as={logo}
-					bg={bgIconColor}
-					color={color}
-					h={'30px'}
-					w={'26px'}
-					pe='6px'
-					zIndex='1'
-					position='relative'
-					right={document.documentElement.dir === 'rtl' ? '-8px' : ''}
-					left={document.documentElement.dir === 'rtl' ? '' : '-8px'}
-				/>
-				<Box w='2px' bg='gray.400' h={index === arrLength - 1 ? '0' : '10vh'} />
-			</Flex>
-			<Flex direction='column' justifyContent='flex-start'>
-				<Text fontSize='sm' color={textColor} fontWeight='bold'>
-					{title}
-				</Text>
-				<Text fontSize='sm' color='gray.400' fontWeight='normal'>
-					{date}
-				</Text>
-			</Flex>
-		</Flex>
-	);
+const Timeline: React.FC<TimelineProps> = ({ timelineData, timelineTitle, fontColor}) => {
+    return (
+        <Box color={fontColor} maxWidth="70%" minWidth="50%" p="10">
+            <Card p="1rem" maxHeight="100%" background="0" color={fontColor} border={"10px"} variant="unstyled">
+                <CardHeader pt="0px" p="28px 0px 35px 21px">
+                    <Text fontSize="2em" fontWeight="bold" pb=".5rem">
+                        {timelineTitle}
+                    </Text>
+                </CardHeader>
+                <CardBody ps="26px" pe="0px" mb="31px" position="relative">
+                    <Flex direction="column">
+                    {timelineData.map((row, index, arr) => (
+                        <TimelineRow
+                        key={index}
+                        logo={row.logo}
+                        title={row.title}
+                        date={row.date}
+                        color={row.color}
+                        index={index}
+                        arrLength={arr.length}
+                        description={row.description}
+                        />
+                    ))}
+                    </Flex>
+                </CardBody>
+            </Card>
+        </Box>
+    )
 }
 
 export default function Experience() {
-  const textColor = useColorModeValue("gray.700", "white.300");
-  const bg = useColorModeValue("gray.50", "gray.700");
+  const fontColor = "gray.50"
 
   const timelineData = [
     {
-      logo: AddIcon,
-      title: "$2400, Design changes",
-      date: "22 DEC 7:20 PM",
+      logo: SiAutodesk,
+      title: "Autodesk",
+      date: "Aug 2022 - Dec 2022",
       color: "brand.300",
+      description: "Internship - Data Engineer/QA"
     },
     {
-      logo: ChatIcon,
-      title: "New order #4219423",
-      date: "21 DEC 11:21 PM",
+      logo: BsPersonWorkspace,
+      title: "Creative Technology Ltd",
+      date: "May 2022 - Jul 2022",
       color: "blue.300",
-    },
-    {
-      logo: DownloadIcon,
-      title: "Server Payments for April",
-      date: "21 DEC 9:28 PM",
-      color: "orange.300",
-    },
-    {
-      logo: CheckIcon,
-      title: "New card added for order #3210145",
-      date: "20 DEC 3:52 PM",
-      color: "red.300",
+      description: "Internship - Web Developer"
     },
   ];
 
+  const timelineTitle = "Work Experiences"
+
+  const eduTimelineData = [
+    {
+      logo: LiaUniversitySolid,
+      title: "National University of Singapore",
+      date: "Aug 2020 - Jun 2024",
+      color: "teal.200",
+      description: "Bachelor of Engineering (Computer Engineering): 2nd Upper Class Honours" 
+    },
+    {
+      logo: LiaBookSolid,
+      title: "St Andrew's Junior College",
+      date: "Jan 2016 - Dec 2017",
+      color: "yellow.300",
+      description: "GCE 'A'-Levels: 87.5 Rank Points"
+    },
+  ];
+
+  const eduTimelineTitle = "Education"
+
   return (
-    <Box maxWidth={["100%", "90%", "70%", "70%"]} alignSelf={"center"}>
-        <Card p="1rem" maxHeight="100%" bg="gray.500">
-        <CardHeader pt="0px" p="28px 0px 35px 21px">
-            <Flex direction="column">
-            <Text fontSize="lg" color={textColor} fontWeight="bold" pb=".5rem">
-                Orders overview
-            </Text>
-            <Text fontSize="sm" color="gray.400" fontWeight="normal">
-                <Text fontWeight="bold" as="span" color="brand.300">
-                +30%
-                </Text>{" "}
-                this month.
-            </Text>
-            </Flex>
-        </CardHeader>
-        <CardBody ps="26px" pe="0px" mb="31px" position="relative">
-            <Flex direction="column">
-            {timelineData.map((row, index, arr) => (
-                <TimelineRow
-                key={index}
-                logo={row.logo}
-                title={row.title}
-                date={row.date}
-                color={row.color}
-                index={index}
-                arrLength={arr.length}
-                />
-            ))}
-            </Flex>
-        </CardBody>
-        </Card>
+    <Box maxWidth={["100%", "90%", "80%", "80%"]} alignSelf={"center"}>
+        <Flex flexDir={["column", "row"]}>
+            <Timeline timelineData={eduTimelineData} timelineTitle={eduTimelineTitle} fontColor={fontColor}></Timeline>
+            <Timeline timelineData={timelineData} timelineTitle={timelineTitle} fontColor={fontColor}></Timeline>
+        </Flex>
     </Box>
   );
 }

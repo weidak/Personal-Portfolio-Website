@@ -55,6 +55,7 @@ export default function Home() {
           <SkillSet fontColor={theme.fontColor}/>
           <Center><Divider w="70%" orientation="horizontal"/></Center>
           <Experience/>
+          <Center><Divider w="70%" orientation="horizontal"/></Center>
           <Card formBackground={formBackground} theme={theme} />
         </Stack>
       </Container>

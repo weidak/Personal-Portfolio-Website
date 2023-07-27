@@ -24,7 +24,7 @@ const About: React.FC<AboutProps> = ({ fontColor }) => {
                     </HStack>
                     <HStack>
                       <Icon as={AiOutlineGithub}/>
-                      <Link href="github.com/weidak">GitHub</Link>
+                      <Link href="https://www.github.com/weidak">GitHub</Link>
                     </HStack>
                     <HStack>
                       <Icon as={AiOutlineMail}/>
