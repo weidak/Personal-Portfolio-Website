@@ -14,7 +14,7 @@ const About: React.FC<AboutProps> = ({ fontColor }) => {
           <Flex justify="center" >
             <Stack width={["90%", "80%", "70%", "70%"]} direction={"column"} align="center">
                 <Heading as="u" size="lg" mb="10">
-                    About myself...
+                    About myself
                 </Heading>
                 <Stack spacing={20} flexDir={['column', 'column', 'row', 'row']}>
                   <VStack spacing={10} align="left">

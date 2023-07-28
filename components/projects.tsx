@@ -1,6 +1,7 @@
 import { Box, Stack, Flex, Heading, SimpleGrid } from "@chakra-ui/react";
 import ProjectCard from "./projectcard";
 import { AiOutlineLink } from "react-icons/ai"
+import ProjectCard2 from "./projectcard2";
 
 interface ProjectsProps {
   theme: any;
@@ -15,6 +16,7 @@ const Projects: React.FC<ProjectsProps> = ({ theme }) => {
             url: "https://github.com/tlyi/ictplus",
             description: "Adminstrative Application for In-Camp Trainings",
             linkIcon: AiOutlineLink,
+            isPersonal: true,
         },
         {
             title: "FoodLeh",
@@ -22,6 +24,7 @@ const Projects: React.FC<ProjectsProps> = ({ theme }) => {
             url: "https://github.com/chang-yichen/FoodLeh",
             description: "Online platform for Hawker Stalls",
             linkIcon: AiOutlineLink,
+            isPersonal: true,
         },
         {
             title: "KE7 Web Portal",
@@ -29,6 +32,7 @@ const Projects: React.FC<ProjectsProps> = ({ theme }) => {
             url: "https://ke7web.netlify.app/",
             description: "Home Portal for KEVII Hall",
             linkIcon: AiOutlineLink,
+            isPersonal: true,
         },
         {
             title: "FPGA Project",
@@ -36,6 +40,7 @@ const Projects: React.FC<ProjectsProps> = ({ theme }) => {
             url: "https://github.com/tlyi/ictplus",
             description: "Adminstrative Application for In-Camp Trainings",
             linkIcon: AiOutlineLink,
+            isPersonal: false,
         },
         {
             title: "ICT+",
@@ -43,6 +48,7 @@ const Projects: React.FC<ProjectsProps> = ({ theme }) => {
             url: "https://github.com/tlyi/ictplus",
             description: "Adminstrative Application for In-Camp Trainings",
             linkIcon: AiOutlineLink,
+            isPersonal: true,
         },
         {
             title: "ICT+",
@@ -50,6 +56,7 @@ const Projects: React.FC<ProjectsProps> = ({ theme }) => {
             url: "https://github.com/tlyi/ictplus",
             description: "Adminstrative Application for In-Camp Trainings",
             linkIcon: AiOutlineLink,
+            isPersonal: true,
         },
     ]
 
@@ -63,7 +70,14 @@ const Projects: React.FC<ProjectsProps> = ({ theme }) => {
             </Flex>
             <SimpleGrid columns={[1, 1, 2, 3]} spacing={5}>
                 {projects.map((content, index) => (
-                    <ProjectCard theme={theme} title={content.title} description={content.description} image={content.image} url={content.url} icon={content.linkIcon}/>
+                    <ProjectCard 
+                    theme={theme} 
+                    title={content.title} 
+                    description={content.description} 
+                    image={content.image} 
+                    url={content.url} 
+                    icon={content.linkIcon}
+                    isPersonal={content.isPersonal}/>
                 ))}
             </SimpleGrid>
         </Box>
