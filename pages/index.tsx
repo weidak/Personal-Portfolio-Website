@@ -1,7 +1,9 @@
 import About from "@/components/about";
-import Card from "@/components/card";
 import Introduction from "@/components/introduction";
 import Navbar from "@/components/navbar";
+import SkillSet from "@/components/skillsets";
+import Experience from "@/components/experience";
+import Projects from "@/components/projects";
 import { 
   Box, 
   Flex, 
@@ -9,14 +11,19 @@ import {
   Container, 
   Stack,
   Divider,
-  Center
+  Center,
+  Fade
 } from "@chakra-ui/react"
 import { useState, useEffect } from "react";
-import { IoSunny, IoMoon } from "react-icons/io5"
-import SkillSet from "@/components/skillsets";
-import Experience from "@/components/experience";
+
 
 export default function Home() {
+
+  
+  // const observer = new IntersectionObserver((entries) => {
+  //   const entry = entries[0]
+  // })
+
 
   const formBackground = useColorModeValue("gray.50", "gray.900");
   const theme = {
@@ -24,6 +31,8 @@ export default function Home() {
     background: 'gray.900',
   }
   const fontColor = 'gray.100' 
+
+  const onOpen = true;
 
   // const [scrollPosition, setScrollPosition] = useState(0);
 
@@ -40,7 +49,10 @@ export default function Home() {
   return (
     <>
       {/* <Navbar /> */}
-      <Box bgGradient='linear(to-t, gray.900, gray.500)'>
+      <Box bgGradient='linear(to-t, cyan.800, gray.900)'>
+      <Fade
+        in={onOpen}
+      >
       <Container
         maxWidth="100%"
         alignItems={"center"}
@@ -55,11 +67,11 @@ export default function Home() {
           <SkillSet fontColor={theme.fontColor}/>
           <Center><Divider w="70%" orientation="horizontal"/></Center>
           <Experience/>
-          <Center><Divider w="70%" orientation="horizontal"/></Center>
-          <Card formBackground={formBackground} theme={theme} />
+          <Projects theme={theme} />
         </Stack>
       </Container>
-    </Box>
+      </Fade>
+      </Box>
     </>
   );
 }

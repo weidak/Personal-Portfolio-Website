@@ -47,7 +47,7 @@ const SkillSet: React.FC<SkillSetProps> = ({ fontColor }) => {
       <Flex justify="center">
         <Stack align="center" width={["90%", "80%", "70%", "70%"]}>
           <Heading as="u" size="lg" mb="10">
-            Skills
+            What I can do
           </Heading>
           <Stack flexDir={['column', 'column', 'row', 'row']}>
           {skillsets.map((category, idx) => (
