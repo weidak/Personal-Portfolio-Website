@@ -1,7 +1,6 @@
 import { Box, Stack, Flex, Heading, SimpleGrid } from "@chakra-ui/react";
 import ProjectCard from "./projectcard";
 import { AiOutlineLink } from "react-icons/ai"
-import ProjectCard2 from "./projectcard2";
 
 interface ProjectsProps {
   theme: any;
