@@ -1,17 +1,17 @@
 import { Card, Stack, CardBody, Text, Image, Icon, Link, CardFooter, Flex, Button, Badge} from "@chakra-ui/react";
+import { IconType } from "react-icons";
 import { MdOutlineSchool, MdPersonOutline, MdLink, MdOutlineDoneAll } from "react-icons/md";
 
 interface ProjectCardProps {
   theme: any,
   title: string,
   description: string,
-  icon: React.ElementType,
+  techStack: IconType[],
   image: string,
   url: string,
-  isPersonal: boolean,
 }
 
-const ProjectCard: React.FC<ProjectCardProps> = ({ theme, title, description, icon, image, url, isPersonal }) => {
+const ProjectCard: React.FC<ProjectCardProps> = ({ theme, title, description, techStack, image, url }) => {
 
     const backgroundColor = "gray.100"
     const iconColor = "blue.500"
@@ -28,6 +28,10 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ theme, title, description, ic
       h="395px"
       w={{ base: "300px", md:"345px"}}
       boxShadow="dark-lg"
+      transform="transform 0.3s ease"
+      _hover={{
+        transform: "scale(1.02)",
+      }}
       >
         {/* Inner Card */}
         <Flex 
@@ -53,43 +57,17 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ theme, title, description, ic
         {/* Image Layer */}
         <Image src={image} borderRadius='10px' objectFit="cover" h='168px' w='295px' mb='10px'/>
         {/* Description Layer */}
-        <Text fontWeight='350' color={descriptionColor} ml={['0px', '18px']} textAlign="start" w='100%'>{description}</Text>
+        <Text fontWeight='350' color={descriptionColor} mr={['0px', '10px']} ml={['0px', '10px']} textAlign="justify" w='95%'>{description}</Text>
         {/* Card Footer Layer: Badge + Collaborators(?) */}
         <Flex mt='auto' justify='space-between' w='100%' align='center' justifyContent='right'>
-          <Badge 
-          borderRadius='9px' 
-          size='md' 
-          colorScheme={ isPersonal ? 'green' : 'yellow' } 
-          color={ isPersonal ? 'green.400' : 'yellow.400' } 
-          textAlign='center'
-          display='flex'
-          justifyContent='center'
-          alignItems='center'>{ isPersonal ? <Text>Personal</Text> : <Text>Subject</Text> }</Badge>
+            {techStack.map((logo, idx) => (
+              <Icon key={idx} as={logo} color="gray.600"/>
+            ))}
         </Flex>
+
         </Flex>
       </Flex>
     );
-    // return (
-    //   <Card variant={"elevated"} background={backgroundColor} m="1vh" width="300px">
-    //     <Image src={image} boxSize="300px" objectFit={"cover"}/>
-    //     <Stack>
-    //     <CardBody>
-    //       <Text as="b">
-    //         {title}
-    //       </Text>
-    //       <Text>
-    //         {description}
-    //       </Text>
-    //     </CardBody>
-    //     <CardFooter>
-    //       <Flex justify={"center"}>
-    //         <Icon as={icon}/>
-    //         <Link target="_blank" href={url}>Github</Link>
-    //       </Flex>
-    //     </CardFooter>
-    //     </Stack>
-    //   </Card>
-    // );
 }
 
 export default ProjectCard;

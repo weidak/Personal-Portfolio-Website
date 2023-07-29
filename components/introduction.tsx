@@ -10,7 +10,7 @@ const Introduction: React.FC<IntroductionProps> = ({ fontColor }) => {
   const displayPic = "https://i.imgur.com/gKJSU0D.png";
 
   return (
-    <Box as="section" h="calc(80vh)" alignItems="center" margin="auto">
+    <Box as="section" h="100vh" alignItems="center" display="flex" justifyContent="center">
       <Stack justify="center" align="center" flexDir={['column', 'column', 'row', 'row']} spacing={20}>
         <Box>
           <Heading color={fontColor}>

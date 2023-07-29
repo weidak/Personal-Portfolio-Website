@@ -1,13 +1,13 @@
 import { Stack, Box, Flex, Text, Container, Divider, Heading, ListItem, Icon, UnorderedList } from "@chakra-ui/react";
-import { BiRadioCircleMarked } from "react-icons/bi";
 import { BsCodeSlash, BsGlobeAmericas, BsFillCloudFill, BsDatabaseFill } from "react-icons/bs"
 import { MdMiscellaneousServices } from "react-icons/md"
+import { forwardRef, ForwardRefRenderFunction } from "react";
 
 interface SkillSetProps {
   fontColor: string;
 }
 
-const SkillSet: React.FC<SkillSetProps> = ({ fontColor }) => {
+const SkillSet: ForwardRefRenderFunction<HTMLDivElement, SkillSetProps> = ({ fontColor }, ref) => {
 
   const skillsets = [
     {
@@ -43,9 +43,9 @@ const SkillSet: React.FC<SkillSetProps> = ({ fontColor }) => {
   ]
 
   return (
-    <Box as="section" id="skillsets" color={fontColor}>
+    <Box as="section" id="skillsets" color={fontColor} ref={ref}>
       <Flex justify="center">
-        <Stack align="center" width={["90%", "80%", "70%", "70%"]}>
+        <Stack align="center" width={["100%", "80%", "70%", "70%"]}>
           <Heading as="u" size="lg" mb="10">
             What I can do
           </Heading>
@@ -75,4 +75,4 @@ const SkillSet: React.FC<SkillSetProps> = ({ fontColor }) => {
   );
 }
 
-export default SkillSet;
+export default forwardRef(SkillSet);

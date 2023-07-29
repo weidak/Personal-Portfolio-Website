@@ -1,4 +1,5 @@
 import { Box, Flex, Text, Heading, VStack, HStack, Icon, Divider, Link, Stack } from "@chakra-ui/react";
+import { forwardRef, ForwardRefRenderFunction } from "react";
 import { AiOutlineLinkedin, AiOutlineGithub, AiOutlineMail } from 'react-icons/ai'
 
 interface AboutProps {
@@ -8,9 +9,9 @@ interface AboutProps {
 const about1 = "As an individual that has been passionate about technology, I have always been curious and like to explore new things within the field. As such, I have engaged in web-development projects as well as created a Telegram bot in my free time. Through these experiences, I have gained valuable software engineering skills." 
 const about2 = "Digital things aside, I love to indulge in physical activities as well. I was the Vice Captain for my Hall's Floorball team and joined other sports such as Muay Thai and Ultimate Frisbee, with the most recent hobby being Bouldering."
 
-const About: React.FC<AboutProps> = ({ fontColor }) => {
+const About: ForwardRefRenderFunction<HTMLDivElement, AboutProps> = ({ fontColor }, ref) => {
     return (
-        <Box as="section" id="about" top="-20vh" color={fontColor}>
+        <Box ref={ref} as="section" id="about" color={fontColor} mb='10vh'>
           <Flex justify="center" >
             <Stack width={["90%", "80%", "70%", "70%"]} direction={"column"} align="center">
                 <Heading as="u" size="lg" mb="10">
@@ -47,4 +48,4 @@ const About: React.FC<AboutProps> = ({ fontColor }) => {
         );
 }
 
-export default About;
+export default forwardRef(About);

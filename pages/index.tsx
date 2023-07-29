@@ -12,17 +12,29 @@ import {
   Stack,
   Divider,
   Center,
-  Fade
+  Fade,
+  SlideFade,
+  Collapse,
+  Slide,
+  ScaleFade
 } from "@chakra-ui/react"
-import { useState, useEffect } from "react";
-
+import { useRef, useState, useEffect } from "react";
+import { useInView } from "framer-motion";
+import experience from "@/components/experience";
 
 export default function Home() {
 
-  
-  // const observer = new IntersectionObserver((entries) => {
-  //   const entry = entries[0]
-  // })
+  // const transitionRefs = useRef([]);
+  // const transitionRefsInView = useInView(transitionRefs);
+
+  const aboutRef = useRef(null);
+  const aboutRefInView = useInView(aboutRef);
+
+  const experienceRef = useRef(null);
+  const experienceRefInView = useInView(experienceRef);
+
+  const projectRef = useRef(null);
+  const projectRefInView = useInView(projectRef);
 
 
   const formBackground = useColorModeValue("gray.50", "gray.900");
@@ -30,47 +42,40 @@ export default function Home() {
     fontColor: 'gray.100',
     background: 'gray.900',
   }
-  const fontColor = 'gray.100' 
-
-  const onOpen = true;
-
-  // const [scrollPosition, setScrollPosition] = useState(0);
-
-  // useEffect(() => {
-  //   const handleScroll = () => {
-  //     setScrollPosition(window.scrollY);
-  //   };
-  //   window.addEventListener("scroll", handleScroll);
-  //   return () => {
-  //     window.removeEventListener("scroll", handleScroll);
-  //   };
-  // }, []);
+  useEffect(() => {
+    console.log('element in view!', aboutRefInView);
+  })
 
   return (
     <>
       {/* <Navbar /> */}
       <Box bgGradient='linear(to-t, cyan.800, gray.900)'>
-      <Fade
-        in={onOpen}
-      >
       <Container
         maxWidth="100%"
         alignItems={"center"}
         justifyContent={"center"}
         flexDirection={"column"}
-        pt="20vh"
         minHeight="100vh" 
+        display="flex"
       >
-        <Stack spacing={"20vh"}>
+        <Stack spacing={"20vh"} maxW="200vh">
+        <Fade
+          in={true}
+        >
           <Introduction fontColor={theme.fontColor}/>
-          <About fontColor={theme.fontColor}/>
-          <SkillSet fontColor={theme.fontColor}/>
+        </Fade>
+        <ScaleFade in={aboutRefInView} initialScale={0.90}>
+          <About ref={aboutRef} fontColor={theme.fontColor}/>
+          <SkillSet ref={aboutRef} fontColor={theme.fontColor}/>
+        </ScaleFade>
           <Center><Divider w="70%" orientation="horizontal"/></Center>
-          <Experience/>
+        <ScaleFade in={experienceRefInView}>
+            <Experience ref={experienceRef} />
+        </ScaleFade>
           <Projects theme={theme} />
+          <Box boxSize="xxs"/>
         </Stack>
       </Container>
-      </Fade>
       </Box>
     </>
   );
