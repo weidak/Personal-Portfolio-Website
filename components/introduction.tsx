@@ -1,24 +1,31 @@
-import { Heading, HStack, Box, Image, Text, Container } from "@chakra-ui/react";
+import { Heading, Box, Image, Text, Stack } from "@chakra-ui/react";
 
-export default function Introduction () {
-
-    const helloWorld = "Hello, I'm Weida"
-
-    return (
-        <Box as="section">
-            <HStack justify={"center"} spacing={50} >
-                <Container>
-                    <Heading>
-                        {helloWorld}
-                    </Heading>
-                    <Text>
-                        A penultimate Computer Engineering student at the National University of Singapore. 
-                    </Text>
-                </Container>
-                <Box maxWidth="30%" display={{ base: 'none', md:'center'}}>
-                    <Image src="https://i.imgur.com/gKJSU0D.png" alt="profile pic"/>
-                </Box>
-            </HStack>
-        </Box>
-    );
+interface IntroductionProps {
+  fontColor: string;
 }
+
+const Introduction: React.FC<IntroductionProps> = ({ fontColor }) => {
+  const hello = "Hello, I'm Weida";
+  const caption = "A final year Computer Engineering student at the National University of Singapore.";
+  const displayPic = "https://i.imgur.com/gKJSU0D.png";
+
+  return (
+    <Box as="section" h="100vh" alignItems="center" display="flex" justifyContent="center">
+      <Stack justify="center" align="center" flexDir={['column', 'column', 'row', 'row']} spacing={20}>
+        <Box>
+          <Heading color={fontColor}>
+            {hello}
+          </Heading>
+          <Text color={fontColor}>
+            {caption}
+          </Text>
+        </Box>
+        <Box width={["90%", "70%", "50%", "30%"]}>
+          <Image src={displayPic} alt="profile pic" />
+        </Box>
+      </Stack>
+    </Box>
+  );
+};
+
+export default Introduction;
