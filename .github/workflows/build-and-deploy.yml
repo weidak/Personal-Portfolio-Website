@@ -28,7 +28,7 @@ jobs:
 
       - name: Deploy
         # Use peaceiris/actions-gh-pages action for deployment
-        uses: peaceiris/actions-gh-pages@v3
+        uses: JamesIves/github-pages-deploy-action@v4
         with:
           # The GitHub token to authenticate the deployment
           github_token: ${{ secrets.PAGES_DEPLOYMENT }}
