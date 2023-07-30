@@ -15,11 +15,10 @@ jobs:
         with:
           # update the Node version to meet your needs
           node-version: 17
-          cache: npm
+          cache: 'npm'
 
       - name: Build
         run: |
-          npm ci
           npm ci
           npm run build
           npm run export
@@ -28,9 +27,9 @@ jobs:
           npm set-script export "next export"
 
       - name: Deploy
-          # https://github.com/JamesIves/github-pages-deploy-action
-          # This deployment does not use secret tokens and authorization
-          # Unlike 'actions/deploy-pages@v1'
+        # https://github.com/JamesIves/github-pages-deploy-action
+        # This deployment does not use secret tokens and authorization
+        # Unlike 'actions/deploy-pages@v1'
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           branch: gh-pages
