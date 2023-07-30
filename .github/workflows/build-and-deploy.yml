@@ -2,7 +2,7 @@ name: Node.js CI
 
 on:
   push:
-    branches: [ gh-pages ]
+    branches: [ main ]
 
 jobs:
   build:
@@ -34,5 +34,5 @@ jobs:
           github_token: ${{ secrets.PAGES_DEPLOYMENT }}
           publish_dir: ./out
           # If your deployment branch is different, update it here
-          publish_branch: gh-pages-deployment
+          publish_branch: gh-pages
           allow_empty_commit: true
