@@ -6,16 +6,13 @@ import Experience from "@/components/experience";
 import Projects from "@/components/projects";
 import { 
   Box, 
-  Flex, 
+  Text, 
   useColorModeValue, 
   Container, 
   Stack,
   Divider,
   Center,
   Fade,
-  SlideFade,
-  Collapse,
-  Slide,
   ScaleFade
 } from "@chakra-ui/react"
 import { useRef, useState, useEffect } from "react";
@@ -73,7 +70,7 @@ export default function Home() {
             <Experience ref={experienceRef} />
         </ScaleFade>
           <Projects theme={theme} />
-          <Box boxSize="xxs"/>
+          <Box boxSize="xxs"><Text fontSize="10" color={theme.fontColor} align={'center'} mb='10vh'>This website was built by me in 2023 using NextJS and ChakraUI.</Text></Box>
         </Stack>
       </Container>
       </Box>

@@ -61,10 +61,8 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ theme, title, description, te
         {/* Card Footer Layer: Badge + Collaborators(?) */}
         <Flex mt='auto' justify='space-between' w='100%' align='center' justifyContent='right'>
             {techStack.map((logo, idx) => (
-              <Icon key={idx} as={logo} color="gray.600"/>
+              <Icon key={idx} as={logo} color="gray.600" boxSize='1.3em'/>
             ))}
-        </Flex>
-
         </Flex>
       </Flex>
     );
