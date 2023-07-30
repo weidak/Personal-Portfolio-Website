@@ -30,9 +30,6 @@ jobs:
         # Use peaceiris/actions-gh-pages action for deployment
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          # The GitHub token to authenticate the deployment
-          github_token: ${{ secrets.PAGES_DEPLOYMENT }}
-          publish_dir: ./out
+          folder: out
           # If your deployment branch is different, update it here
-          publish_branch: gh-pages-deployment
-          allow_empty_commit: true
+          branch: gh-pages-deployment
