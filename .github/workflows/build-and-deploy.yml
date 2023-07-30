@@ -27,10 +27,12 @@ jobs:
           npm set-script export "next export"
 
       - name: Deploy
-        # https://github.com/JamesIves/github-pages-deploy-action
-        # This deployment does not use secret tokens and authorization
-        # Unlike 'actions/deploy-pages@v1'
-        uses: JamesIves/github-pages-deploy-action@v4
+        # Use peaceiris/actions-gh-pages action for deployment
+        uses: peaceiris/actions-gh-pages@v3
         with:
-          branch: gh-pages
-          folder: out
+          # The GitHub token to authenticate the deployment
+          github_token: ${{ secrets.PAGES_DEPLOYMENT }}
+          publish_dir: ./out
+          # If your deployment branch is different, update it here
+          publish_branch: gh-pages
+          allow_empty_commit: true
