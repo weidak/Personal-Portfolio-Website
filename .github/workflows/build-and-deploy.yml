@@ -6,16 +6,20 @@ on:
 
 jobs:
   build:
+
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
-
-      - uses: actions/setup-node@v2
+      # https://github.com/actions/checkout
+      - uses: actions/checkout@v3
+        
+      # a standard step for GitHub actions on Node
+      # https://github.com/actions/setup-node
+      - uses: actions/setup-node@v3
         with:
           # update the Node version to meet your needs
-          node-version: 17
-          cache: 'npm'
+          node-version: 16
+          cache: npm
 
       - name: Build
         run: |
@@ -23,16 +27,10 @@ jobs:
           npm run build
           npm run export
           touch out/.nojekyll
-          npm set-script build "next build"
-          npm set-script export "next export"
 
       - name: Deploy
-        # Use peaceiris/actions-gh-pages action for deployment
-        uses: peaceiris/actions-gh-pages@v3
+        # https://github.com/JamesIves/github-pages-deploy-action
+        uses: JamesIves/github-pages-deploy-action@4.4.0
         with:
-          # The GitHub token to authenticate the deployment
-          github_token: ${{ secrets.PAGES_DEPLOYMENT }}
-          publish_dir: ./out
-          # If your deployment branch is different, update it here
-          publish_branch: gh-pages
-          allow_empty_commit: true
+          branch: gh-pages
+          folder: out
