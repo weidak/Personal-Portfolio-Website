@@ -64,7 +64,6 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ theme, title, description, te
               <Icon key={idx} as={logo} color="gray.600" boxSize='1.3em'/>
             ))}
         </Flex>
-        </Flex>
       </Flex>
     );
 }
