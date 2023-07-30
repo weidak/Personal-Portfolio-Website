@@ -1,26 +1,48 @@
 import About from "@/components/about";
-import Card from "@/components/card";
 import Introduction from "@/components/introduction";
 import Navbar from "@/components/navbar";
-import ScrollIndicator from "@/components/scrollindicator";
+import SkillSet from "@/components/skillsets";
+import Experience from "@/components/experience";
+import Projects from "@/components/projects";
 import { 
   Box, 
-  useColorMode, 
+  Text, 
   useColorModeValue, 
   Container, 
-  Stack
+  Stack,
+  Divider,
+  Center,
+  Fade,
+  ScaleFade
 } from "@chakra-ui/react"
-import { useState, useEffect } from "react";
-import { IoSunny, IoMoon } from "react-icons/io5"
+
+import { useRef, useState, useEffect } from "react";
+import { useInView } from "framer-motion";
+import experience from "@/components/experience";
 
 export default function Home() {
 
-  const { toggleColorMode } = useColorMode();
+  // const transitionRefs = useRef([]);
+  // const transitionRefsInView = useInView(transitionRefs);
 
-  const [toggle, setToggle] = useState(false);
+  const aboutRef = useRef(null);
+  const aboutRefInView = useInView(aboutRef);
 
-  //Form your own colour schemes
+  const experienceRef = useRef(null);
+  const experienceRefInView = useInView(experienceRef);
+
+  const projectRef = useRef(null);
+  const projectRefInView = useInView(projectRef);
+
+
   const formBackground = useColorModeValue("gray.50", "gray.900");
+  const theme = {
+    fontColor: 'gray.100',
+    background: 'gray.900',
+  }
+  useEffect(() => {
+    console.log('element in view!', aboutRefInView);
+  })
 
   const [scrollPosition, setScrollPosition] = useState(0);
 
@@ -35,45 +57,36 @@ export default function Home() {
   })
 
   return (
-    <Box>
-      <Toggle/>
-      <Navbar formBackground={formBackground} toggle={toggle}/>
+    <>
+      {/* <Navbar /> */}
+      <Box bgGradient='linear(to-t, cyan.800, gray.900)'>
       <Container
-          maxWidth="90%"
-          alignItems={"center"}
-          justifyContent={"center"}
-          flexDirection={"column"}
-          pt="20vh"
+        maxWidth="100%"
+        alignItems={"center"}
+        justifyContent={"center"}
+        flexDirection={"column"}
+        minHeight="100vh" 
+        display="flex"
+      >
+        <Stack spacing={"20vh"} maxW="200vh">
+        <Fade
+          in={true}
         >
-          <Stack>
-            <Introduction/>      
-            <About/>  
-            <Card formBackground={formBackground}/>
-          </Stack>
+          <Introduction fontColor={theme.fontColor}/>
+        </Fade>
+        <ScaleFade in={aboutRefInView} initialScale={0.90}>
+          <About ref={aboutRef} fontColor={theme.fontColor}/>
+          <SkillSet ref={aboutRef} fontColor={theme.fontColor}/>
+        </ScaleFade>
+          <Center><Divider w="70%" orientation="horizontal"/></Center>
+        <ScaleFade in={experienceRefInView}>
+            <Experience ref={experienceRef} />
+        </ScaleFade>
+          <Projects theme={theme} />
+          <Box boxSize="xxs"><Text fontSize="10" color={theme.fontColor} align={'center'} mb='10vh'>This website was built by me in 2023 using NextJS and ChakraUI.</Text></Box>
+        </Stack>
       </Container>
-    </Box>
-  )
-
-  function Toggle() {
-    return (
-      <Box position="fixed">      
-        <Box
-          position="absolute"
-          // alignContent={"flex-end"}
-          bottom={0}
-          right={0}
-          cursor={"pointer"}
-          onClick={() => {
-            toggleColorMode();
-            setToggle(!toggle);
-          } }
-          top="95vh"
-          left="50%"
-          transform="translateY(-50%, -50%)"
-        >
-          {toggle ? <IoMoon /> : <IoSunny />}
-        </Box>
       </Box>
-    );
-  }
+    </>
+  );
 }
