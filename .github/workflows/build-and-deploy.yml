@@ -34,5 +34,5 @@ jobs:
           github_token: ${{ secrets.PAGES_DEPLOYMENT }}
           publish_dir: ./out
           # If your deployment branch is different, update it here
-          publish_branch: gh-pages
+          publish_branch: gh-pages-deployment
           allow_empty_commit: true
