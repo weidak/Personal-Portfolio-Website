@@ -38,12 +38,24 @@ jobs:
       - name: Static HTML export with Next.js 
         run: npx --no-install next export
 
-      - name: Build and push Docker image
-        uses: docker/build-push-action@v2
-        with:
-          context: ./
-          push: true
-          tags: your-docker-registry/your-image-name:latest
+      - name: Login to Docker
+        env: 
+          DOCKER_USER: ${{ secrets.DOCKER_USER }}
+          DOCKER_PASSWORD: $${{ secrets.DOCKER_PASSWORD }}
+        run: docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
+      
+      - name: Build the Docker image
+        run: docker build . --file Dockerfile --tag weidak/weidak.github.io:${{ github.sha }}
+
+      - name: Push the Docker image
+        run: docker push weidak/weidak.github.io:${{ github.sha }}
+
+      # - name: Build and push Docker image
+      #   uses: docker/build-push-action@v2
+      #   with:
+      #     context: ./
+      #     push: true
+      #     tags: your-docker-registry/your-image-name:latest
 
       - name: Upload artifact 
         uses: actions/upload-artifact@v2
