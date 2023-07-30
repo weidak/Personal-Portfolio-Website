@@ -1,0 +1,38 @@
+name: Node.js CI
+
+on:
+  push:
+    branches: [ gh-pages ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: actions/setup-node@v2
+        with:
+          # update the Node version to meet your needs
+          node-version: 17
+          cache: 'npm'
+
+      - name: Build
+        run: |
+          npm ci
+          npm run build
+          npm run export
+          touch out/.nojekyll
+          npm set-script build "next build"
+          npm set-script export "next export"
+
+      - name: Deploy
+        # Use peaceiris/actions-gh-pages action for deployment
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          # The GitHub token to authenticate the deployment
+          github_token: ${{ secrets.PAGES_DEPLOYMENT }}
+          publish_dir: ./out
+          # If your deployment branch is different, update it here
+          publish_branch: gh-pages-deployment
+          allow_empty_commit: true
