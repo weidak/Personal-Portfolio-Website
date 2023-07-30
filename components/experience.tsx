@@ -3,9 +3,9 @@ import { AddIcon, ChatIcon, DownloadIcon, CheckIcon } from "@chakra-ui/icons";
 import { LiaUniversitySolid, LiaBookSolid } from "react-icons/lia"
 import { SiAutodesk } from "react-icons/si"
 import { BsPersonWorkspace } from "react-icons/bs"
-import TimelineRow from "./timelinerow";
 import { forwardRef, ForwardRefRenderFunction } from "react";
 import { IconType } from "react-icons";
+import TimelineRow from "./timelinerow";
 
 interface TimelineProps {
     fontColor: string,
