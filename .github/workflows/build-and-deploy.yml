@@ -1,8 +1,12 @@
-name: Publish to GitHub Pages
+# This serves as a placeholder template for container-hosting services instead of github pages. 
+
+# CAN BE IGNORED
+
+name: Build and deploy using Docker 
 
 on:
   push:
-    branches: ["main"]
+    branches: []
 
 env:
   NODE_AUTH_TOKEN: ${{ secrets.PAGES_DEPLOYMENT }}
