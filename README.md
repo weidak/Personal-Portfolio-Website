@@ -1,1 +1,1 @@
-This website was created with Chakra UI and NextJS.
+This website was created with NextJS and ChakraUI.

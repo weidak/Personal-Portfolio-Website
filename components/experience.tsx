@@ -26,7 +26,7 @@ interface TimelineProps {
 const Timeline: React.FC<TimelineProps> = ({ timelineData, timelineTitle, fontColor}) => {
     return (
         <Box color={fontColor} minWidth="50%" p="10">
-            <Card p="1rem" maxHeight="100%" background="0" color={fontColor} border={"10px"} variant="unstyled">
+            <Card p="1rem" maxHeight="100%" background="0" color={fontColor} border={"10px"} variant="unstyled" align={"center"}>
                 <CardHeader pt="0px" p="28px 0px 35px 21px">
                     <Text fontSize="2em" fontWeight="bold" pb=".5rem" as="u">
                         {timelineTitle}
@@ -92,10 +92,8 @@ const Experience: ForwardRefRenderFunction<HTMLDivElement> = ({}, ref) => {
 
 
   return (
-    <Box ref={ref} width={["100%", "90%", "80%", "70%"]} alignSelf={"center"} alignItems="center" margin="auto">
-        <Flex flexDir={["column", "row"]} flex='1' display='flex'>
-            <Timeline timelineData={timelineData} timelineTitle={timelineTitle} fontColor={fontColor}></Timeline>
-        </Flex>
+    <Box ref={ref} alignSelf={"center"} alignItems="center">
+        <Timeline timelineData={timelineData} timelineTitle={timelineTitle} fontColor={fontColor}></Timeline>
     </Box>
   );
 }

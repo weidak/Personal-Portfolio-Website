@@ -13,12 +13,12 @@ import {
   Divider,
   Center,
   Fade,
-  ScaleFade
+  ScaleFade,
+  Flex
 } from "@chakra-ui/react"
 
 import { useRef, useState, useEffect } from "react";
 import { useInView } from "framer-motion";
-import experience from "@/components/experience";
 
 export default function Home() {
 
@@ -34,8 +34,6 @@ export default function Home() {
   const projectRef = useRef(null);
   const projectRefInView = useInView(projectRef);
 
-
-  const formBackground = useColorModeValue("gray.50", "gray.900");
   const theme = {
     fontColor: 'gray.100',
     background: 'gray.900',
@@ -60,32 +58,33 @@ export default function Home() {
     <>
       {/* <Navbar /> */}
       <Box bgGradient='linear(to-t, cyan.800, gray.900)'>
-      <Container
-        maxWidth="100%"
-        alignItems={"center"}
-        justifyContent={"center"}
-        flexDirection={"column"}
-        minHeight="100vh" 
-        display="flex"
-      >
-        <Stack spacing={"20vh"} maxW="200vh">
-        <Fade
-          in={true}
-        >
-          <Introduction fontColor={theme.fontColor}/>
-        </Fade>
-        <ScaleFade in={aboutRefInView} initialScale={0.90}>
-          <About ref={aboutRef} fontColor={theme.fontColor}/>
-          <SkillSet ref={aboutRef} fontColor={theme.fontColor}/>
-        </ScaleFade>
-          <Center><Divider w="70%" orientation="horizontal"/></Center>
-        <ScaleFade in={experienceRefInView}>
-            <Experience ref={experienceRef} />
-        </ScaleFade>
-          <Projects theme={theme} />
-          <Box boxSize="xxs"><Text fontSize="10" color={theme.fontColor} align={'center'} mb='10vh'>This website was built by me in 2023 using NextJS and ChakraUI.</Text></Box>
-        </Stack>
-      </Container>
+        <Container maxWidth={["100%", "70%", "70%", "130vh"]}>
+          <Flex
+            alignItems={"center"}
+            justify={"center"}
+            flexDirection={"column"}
+            minHeight="100vh" 
+            display="flex"
+          >
+            <Stack spacing={"10vh"}>
+            <Fade
+              in={true}
+            >
+              <Introduction fontColor={theme.fontColor}/>
+            </Fade>
+            <ScaleFade in={aboutRefInView} initialScale={0.90}>
+              <About ref={aboutRef} fontColor={theme.fontColor}/>
+              <SkillSet ref={aboutRef} fontColor={theme.fontColor}/>
+            </ScaleFade>
+              <Center><Divider mt="10" orientation="horizontal"/></Center>
+            <ScaleFade in={experienceRefInView}>
+                <Experience ref={experienceRef} />
+            </ScaleFade>
+              <Projects theme={theme} />
+              <Box boxSize="xxs"><Text fontSize="10" color={theme.fontColor} align={'center'} mb='10vh'>This website was built by me in 2023 using NextJS and ChakraUI.</Text></Box>
+            </Stack>
+          </Flex>
+        </Container>
       </Box>
     </>
   );

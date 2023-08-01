@@ -45,16 +45,16 @@ const SkillSet: ForwardRefRenderFunction<HTMLDivElement, SkillSetProps> = ({ fon
   return (
     <Box as="section" id="skillsets" color={fontColor} ref={ref}>
       <Flex justify="center">
-        <Stack align="center" width={["100%", "80%", "70%", "70%"]}>
+        <Stack align="center">
           <Heading as="u" size="lg" mb="10">
             What I can do
           </Heading>
-          <Stack flexDir={['column', 'column', 'row', 'row']}>
+          <Stack flexDir={['column', 'column', 'column', 'row']}>
           {skillsets.map((category, idx) => (
             <Container key={idx} mt="2vh">
               <Stack align={"center"}>
                 <Icon boxSize="2em" as={category.logo} color={category.color}/>
-                <Text fontSize={18}>
+                <Text fontSize={[19, 17]}>
                   {category.title}
                 </Text>
                 <Divider margin={"10px"}/>
