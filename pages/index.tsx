@@ -1,6 +1,6 @@
 import About from "@/components/about";
 import Introduction from "@/components/introduction";
-import Navbar from "@/components/navbar";
+// import Navbar from "@/components/navbar";
 import SkillSet from "@/components/skillsets";
 import Experience from "@/components/experience";
 import Projects from "@/components/projects";
@@ -22,9 +22,6 @@ import { useInView } from "framer-motion";
 
 export default function Home() {
 
-  // const transitionRefs = useRef([]);
-  // const transitionRefsInView = useInView(transitionRefs);
-
   const aboutRef = useRef(null);
   const aboutRefInView = useInView(aboutRef);
 
@@ -37,7 +34,10 @@ export default function Home() {
   const theme = {
     fontColor: 'gray.100',
     background: 'gray.900',
+    bgGradient: 'linear(to-t, cyan.800, gray.900)',
   }
+
+
   useEffect(() => {
     console.log('element in view!', aboutRefInView);
   })
@@ -56,8 +56,10 @@ export default function Home() {
 
   return (
     <>
-      {/* <Navbar /> */}
-      <Box bgGradient='linear(to-t, cyan.800, gray.900)'>
+      <Box
+        id="main"
+        bgGradient={theme.bgGradient}
+      >
         <Container maxWidth={["100%", "70%", "70%", "130vh"]}>
           <Flex
             alignItems={"center"}
@@ -73,7 +75,7 @@ export default function Home() {
               <Introduction fontColor={theme.fontColor}/>
             </Fade>
             <ScaleFade in={aboutRefInView} initialScale={0.90}>
-              <About ref={aboutRef} fontColor={theme.fontColor}/>
+              <About fontColor={theme.fontColor}/>
               <SkillSet ref={aboutRef} fontColor={theme.fontColor}/>
             </ScaleFade>
               <Center><Divider mt="10" orientation="horizontal"/></Center>
