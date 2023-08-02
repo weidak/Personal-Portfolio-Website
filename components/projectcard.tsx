@@ -75,7 +75,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ theme, title, description, te
           {/* Image Layer */}
           <Image src={image} borderRadius='10px' objectFit="cover" h='168px' w='295px' mb='10px'/>
           {/* Description Layer */}
-          <Text as='a' fontWeight='350' noOfLines={6} color={descriptionColor} textAlign="justify">{description}</Text>
+          <Text fontWeight='350' noOfLines={6} color={descriptionColor} textAlign="justify">{description}</Text>
         </Flex>
       </Flex>
     );

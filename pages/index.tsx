@@ -1,6 +1,6 @@
 import About from "@/components/about";
 import Introduction from "@/components/introduction";
-import Navbar from "@/components/navbar";
+// import Navbar from "@/components/navbar";
 import SkillSet from "@/components/skillsets";
 import Experience from "@/components/experience";
 import Projects from "@/components/projects";
@@ -75,7 +75,7 @@ export default function Home() {
               <Introduction fontColor={theme.fontColor}/>
             </Fade>
             <ScaleFade in={aboutRefInView} initialScale={0.90}>
-              <About ref={aboutRef} fontColor={theme.fontColor}/>
+              <About fontColor={theme.fontColor}/>
               <SkillSet ref={aboutRef} fontColor={theme.fontColor}/>
             </ScaleFade>
               <Center><Divider mt="10" orientation="horizontal"/></Center>
