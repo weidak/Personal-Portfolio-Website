@@ -22,9 +22,6 @@ import { useInView } from "framer-motion";
 
 export default function Home() {
 
-  // const transitionRefs = useRef([]);
-  // const transitionRefsInView = useInView(transitionRefs);
-
   const aboutRef = useRef(null);
   const aboutRefInView = useInView(aboutRef);
 
@@ -37,7 +34,10 @@ export default function Home() {
   const theme = {
     fontColor: 'gray.100',
     background: 'gray.900',
+    bgGradient: 'linear(to-t, cyan.800, gray.900)',
   }
+
+
   useEffect(() => {
     console.log('element in view!', aboutRefInView);
   })
@@ -56,8 +56,10 @@ export default function Home() {
 
   return (
     <>
-      {/* <Navbar /> */}
-      <Box bgGradient='linear(to-t, cyan.800, gray.900)'>
+      <Box
+        id="main"
+        bgGradient={theme.bgGradient}
+      >
         <Container maxWidth={["100%", "70%", "70%", "130vh"]}>
           <Flex
             alignItems={"center"}
@@ -66,7 +68,8 @@ export default function Home() {
             minHeight="100vh" 
             display="flex"
           >
-            <Stack spacing={"10vh"}>
+            {/* <Navbar backgroundGradient={theme.bgGradient}/> */}
+            <Stack spacing={"10vh"} flex="1 1 auto">
             <Fade
               in={true}
             >
