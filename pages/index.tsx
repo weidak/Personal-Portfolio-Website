@@ -68,8 +68,7 @@ export default function Home() {
             minHeight="100vh" 
             display="flex"
           >
-            {/* <Navbar backgroundGradient={theme.bgGradient}/> */}
-            <Stack spacing={"10vh"} flex="1 1 auto">
+            <Stack spacing={"10vh"}>
             <Fade
               in={true}
             >
