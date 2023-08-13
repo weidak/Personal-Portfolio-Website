@@ -35,7 +35,10 @@ export default function Home() {
     fontColor: 'gray.100',
     background: 'gray.900',
     bgGradient: 'linear(to-t, cyan.800, gray.900)',
+<<<<<<< HEAD
     containerMargins: '10px'
+=======
+>>>>>>> f07832c0589793308ff086d8bc4381d7f1e32e35
   }
 
 
