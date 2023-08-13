@@ -35,6 +35,10 @@ export default function Home() {
     fontColor: 'gray.100',
     background: 'gray.900',
     bgGradient: 'linear(to-t, cyan.800, gray.900)',
+<<<<<<< HEAD
+    containerMargins: '10px'
+=======
+>>>>>>> f07832c0589793308ff086d8bc4381d7f1e32e35
   }
 
 
@@ -60,7 +64,7 @@ export default function Home() {
         id="main"
         bgGradient={theme.bgGradient}
       >
-        <Container maxWidth={["100%", "70%", "70%", "130vh"]}>
+        <Container maxWidth={["100%", "80%", "70%", "130vh"]}>
           <Flex
             alignItems={"center"}
             justify={"center"}
@@ -72,15 +76,13 @@ export default function Home() {
             <Fade
               in={true}
             >
-              <Introduction fontColor={theme.fontColor}/>
+              <Introduction theme={theme}/>
             </Fade>
-            <ScaleFade in={aboutRefInView} initialScale={0.90}>
-              <About fontColor={theme.fontColor}/>
-              <SkillSet ref={aboutRef} fontColor={theme.fontColor}/>
-            </ScaleFade>
-              <Center><Divider mt="10" orientation="horizontal"/></Center>
+            <About theme={theme}/>
+            <SkillSet ref={aboutRef} theme={theme}/>
+            <Center><Divider mt="10" orientation="horizontal"/></Center>
             <ScaleFade in={experienceRefInView}>
-                <Experience ref={experienceRef} />
+                <Experience theme={theme} ref={experienceRef} />
             </ScaleFade>
               <Projects theme={theme} />
               <Box boxSize="xxs"><Text fontSize="10" color={theme.fontColor} align={'center'} mb='10vh'>This website was built by me in 2023 using NextJS and ChakraUI.</Text></Box>

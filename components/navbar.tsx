@@ -78,7 +78,7 @@ export default function Navbar({ backgroundGradient, parentHeight }: NavbarProps
         <Container py={{ base: "4", lg: "5" }}>
           <HStack spacing="10" justify="space-between">
             {/* <Image src="https://i.imgur.com/VhIvSNs.png" width={"70px"} /> */}
-            {/* {isDesktop ? (
+            {isDesktop ? (
               <Flex justify="space-between" flex="1">
                 <ButtonGroup variant="link" spacing="8">
                   {navData.map((item, i) => (
@@ -89,7 +89,7 @@ export default function Navbar({ backgroundGradient, parentHeight }: NavbarProps
                   ))}
                 </ButtonGroup>
               </Flex>
-            ) : ( */}
+            ) : (
               <>
                 <IconButton
                   ref={btnRef}
@@ -116,7 +116,7 @@ export default function Navbar({ backgroundGradient, parentHeight }: NavbarProps
                   </DrawerContent>
                 </Drawer>
               </>
-            {/* )} */}
+            )} 
           </HStack>
         </Container>
       </Box>

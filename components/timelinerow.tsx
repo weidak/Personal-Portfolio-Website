@@ -55,7 +55,7 @@ const TimelineRow: React.FC<TimelineRowProps> = ({ logo, company, date, color, i
                     {description.role}
                 </Text>
                 <Box p="1vh">
-                    <Text>
+                    <Text textAlign={"justify"}>
                         {description.overview}
                     </Text>
                     <UnorderedList>

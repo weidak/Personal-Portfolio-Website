@@ -1,22 +1,22 @@
 import { Heading, Box, Image, Text, Stack } from "@chakra-ui/react";
 
 interface IntroductionProps {
-  fontColor: string;
+  theme: any;
 }
 
-const Introduction: React.FC<IntroductionProps> = ({ fontColor }) => {
+const Introduction: React.FC<IntroductionProps> = ({ theme }) => {
   const hello = "Hello, I'm Weida";
   const caption = "A final year Computer Engineering student at the National University of Singapore.";
   const displayPic = "https://i.imgur.com/gKJSU0D.png";
 
   return (
-    <Box as="section" h="100vh" alignItems="center" display="flex" justifyContent="center">
+    <Box as="section" h="100vh" alignItems="center" display="flex" justifyContent="center" p={theme.containerMargins}>
       <Stack justify="center" align="center" flexDir={['column', 'column', 'row', 'row']} spacing={20}>
         <Box>
-          <Heading color={fontColor}>
+          <Heading color={theme.fontColor}>
             {hello}
           </Heading>
-          <Text color={fontColor}>
+          <Text color={theme.fontColor}>
             {caption}
           </Text>
         </Box>

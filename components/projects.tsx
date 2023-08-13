@@ -64,13 +64,13 @@ const Projects: React.FC<ProjectsProps> = ({ theme }) => {
 
 
     return (
-        <Box alignSelf={"center"} mb="20vh" alignItems="center" margin="auto">
+        <Box alignSelf={"center"} mb="20vh" alignItems="center" margin={theme.containerPadding}>
             <Flex justify={"center"} pb="2vh">
                 <Heading as="u" color={theme.fontColor}>
                     Projects
                 </Heading>
             </Flex>
-            <SimpleGrid columns={[1, 1, 2, 3]} spacing={10}>
+            <SimpleGrid columns={[1, 1, 1, 3]} spacing={[10]}>
                 {projects.map((content, index) => (
                     <ProjectCard 
                     key={index}
