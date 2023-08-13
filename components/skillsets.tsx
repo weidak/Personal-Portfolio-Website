@@ -4,10 +4,10 @@ import { MdMiscellaneousServices } from "react-icons/md"
 import { forwardRef, ForwardRefRenderFunction } from "react";
 
 interface SkillSetProps {
-  fontColor: string;
+  theme: any;
 }
 
-const SkillSet: ForwardRefRenderFunction<HTMLDivElement, SkillSetProps> = ({ fontColor }, ref) => {
+const SkillSet: ForwardRefRenderFunction<HTMLDivElement, SkillSetProps> = ({ theme }, ref) => {
 
   const skillsets = [
     {
@@ -43,7 +43,7 @@ const SkillSet: ForwardRefRenderFunction<HTMLDivElement, SkillSetProps> = ({ fon
   ]
 
   return (
-    <Box as="section" id="skillsets" color={fontColor} ref={ref}>
+    <Box as="section" id="skillsets" color={theme.fontColor} ref={ref} m={theme.containerMargins}>
       <Flex justify="center">
         <Stack align="center">
           <Heading as="u" size="lg" mb="10">

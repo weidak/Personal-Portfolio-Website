@@ -7,53 +7,11 @@ import { forwardRef, ForwardRefRenderFunction } from "react";
 import { IconType } from "react-icons";
 import TimelineRow from "./timelinerow";
 
-interface TimelineProps {
-    fontColor: string,
-    timelineTitle: string,
-    timelineData: {
-        logo: IconType, 
-        company: string,
-        date: string,
-        color: string
-        description: {
-            role: string;
-            overview: string;
-            details: string[];
-        };
-    }[],
+interface ExperienceProps {
+    theme: any,
 }
 
-const Timeline: React.FC<TimelineProps> = ({ timelineData, timelineTitle, fontColor}) => {
-    return (
-        <Box color={fontColor} minWidth="50%" p="10">
-            <Card p="1rem" maxHeight="100%" background="0" color={fontColor} border={"10px"} variant="unstyled" align={"center"}>
-                <CardHeader pt="0px" p="28px 0px 35px 21px">
-                    <Text fontSize="2em" fontWeight="bold" pb=".5rem" as="u">
-                        {timelineTitle}
-                    </Text>
-                </CardHeader>
-                <CardBody ps="26px" pe="0px" mb="31px" position="relative">
-                    <Flex direction="column" display='flex' flex='1'>
-                    {timelineData.map((row, index, arr) => (
-                        <TimelineRow
-                        key={index}
-                        logo={row.logo}
-                        company={row.company}
-                        date={row.date}
-                        color={row.color}
-                        index={index}
-                        arrLength={arr.length}
-                        description={row.description}
-                        />
-                    ))}
-                    </Flex>
-                </CardBody>
-            </Card>
-        </Box>
-    )
-}
-
-const Experience: ForwardRefRenderFunction<HTMLDivElement> = ({}, ref) => {
+const Experience: ForwardRefRenderFunction<HTMLDivElement, ExperienceProps> = ({ theme }, ref) => {
   const fontColor = "gray.50"
 
   const timelineData = [
@@ -88,12 +46,34 @@ const Experience: ForwardRefRenderFunction<HTMLDivElement> = ({}, ref) => {
         },
     },];  
 
-  const timelineTitle = "Companies I have worked at"
+  const timelineTitle = "Experiences"
 
 
   return (
-    <Box ref={ref} alignSelf={"center"} alignItems="center">
-        <Timeline timelineData={timelineData} timelineTitle={timelineTitle} fontColor={fontColor}></Timeline>
+    <Box ref={ref} alignSelf={"center"} alignItems="center" m={theme.containerMargins} >
+        <Box maxHeight="100%" background="0" color={fontColor} alignItems={"center"}>
+            <Flex pb={"35px"} justify={"center"}>
+                <Text fontSize="2em" fontWeight="bold" pb=".5rem" as="u">
+                    {timelineTitle}
+                </Text>
+            </Flex>
+            <Flex ps="26px" pe="0px" mb="31px" position="relative">
+                <Flex direction="column" display='flex' flex='1'>
+                {timelineData.map((row, index, arr) => (
+                    <TimelineRow
+                    key={index}
+                    logo={row.logo}
+                    company={row.company}
+                    date={row.date}
+                    color={row.color}
+                    index={index}
+                    arrLength={arr.length}
+                    description={row.description}
+                    />
+                ))}
+                </Flex>
+            </Flex>
+        </Box>
     </Box>
   );
 }
