@@ -1,49 +1,85 @@
+import { ChevronDownIcon, ChevronUpIcon } from "@chakra-ui/icons";
 import {
     useBreakpointValue,
     Box,
     Container,
     HStack,
     Stack,
-    Image,
+    Icon,
     Flex,
     ButtonGroup,
     IconButton,
-    useDisclosure,
-    Drawer,
-    DrawerContent,
-    Text,
     Button,
-    useColorModeValue,
+    Image,
+    Text,
+    Menu,
+    MenuButton,
+    MenuList,
+    MenuItem,
+    Divider,
   } from "@chakra-ui/react";
 import { useRef, useEffect, useState } from "react";
 import { FiMenu } from "react-icons/fi";
+import { transform } from "typescript";
 
-interface NavbarProps {
-  backgroundGradient: string
-  parentHeight: number,
+interface NavbarButtonsProps {
+  link: string,
+  label: string,
+  idx: number,
 }
 
-export default function Navbar({ backgroundGradient, parentHeight }: NavbarProps ) {
-  // Remove the offset state as it's not needed
-  // const [offset, setOffset] = useState(0);
+const NavbarButtons: React.FC<NavbarButtonsProps> = ({label, idx, link}) => {
+  const [isHovered, setIsHovered] = useState(false);
 
-  // Remove the useEffect for handleScroll
-  // useEffect(() => {
-  //     const handleScroll = () => {
-  //         setOffset(window.scrollY);
-  //     }
-  //     // Adds the scroll event listener when component mounts
-  //     window.addEventListener('scroll', handleScroll);
-  //     return () => {
-  //         // Removes the scroll event listener when component unmounts
-  //         window.removeEventListener('scroll', handleScroll);
-  //     }
-  // }, []);
+  const handleMouseEnter = () => {
+    setIsHovered(true);
+  };
+
+  const handleMouseLeave = () => {
+    setIsHovered(false);
+  };
+
+  const navButtonsStyle: React.CSSProperties = {
+    transition: 'transform 0.3s ease',
+    cursor: '',
+    transform: isHovered ? 'scale(1.1)' : 'scale(1)',
+    color: isHovered ? 'orange' : 'white',
+    boxShadow: '10px',
+    fontWeight: 'bold',
+  }
+
+  const smoothScrollTo = (targetId: string, offset: number) => {
+    const targetElement = document.querySelector(targetId);
+    if (targetElement) {
+      const offsetPosition = targetElement.offsetTop - offset; // This error can be ignored
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth",
+      });
+      console.log("Scrolling to " + targetId)
+    }
+  };
+  
+
+  return (
+    <Text
+      key={idx}
+      as="a"
+      onClick={() => smoothScrollTo(link, 80)}
+      cursor="pointer" // Add cursor style to indicate link behavior
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+      style={navButtonsStyle}
+    >
+      {label}
+    </Text>
+  )
+}
+
+export default function Navbar() {
 
   // Drawer related properties
   const isDesktop = useBreakpointValue({ base: false, lg: true });
-  const { isOpen, onOpen, onClose } = useDisclosure();
-  const btnRef = useRef<HTMLButtonElement>(null);
 
   const navData = [
     {
@@ -52,75 +88,111 @@ export default function Navbar({ backgroundGradient, parentHeight }: NavbarProps
     },
     {
       label: "Experience",
-      link: "#experience",
+      link: "#work",
     },
     {
       label: "Projects",
       link: "#projects",
     },
-    {
-      label: "Contact",
-      link: "#contact",
-    },
   ];
 
+  const smoothScrollTo = (targetId: string) => {
+    const targetElement = document.querySelector(targetId);
+    if (targetElement) {
+      window.scrollTo({
+        top: targetElement.offsetTop,
+        behavior: "smooth",
+      });
+      console.log("Scrolling to " + targetId)
+    }
+  };
+
+  const [isScrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 0);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  const transitionStyles: React.CSSProperties = {
+    transition: "opacity 0.5s ease",
+  };
+
   return (
-    <Box
-      as="nav"
-      position="fixed" 
-      top="0" 
-      zIndex={1}
-      width="100%"
-    >
+    <>
+    { isDesktop ? (
+        <Flex
+        display="flex"
+        height={"80px"}
+        position="fixed"
+        justify="center"
+        top="0"
+        left="0"
+        right="0"
+        bgGradient="linear(to-b, gray.900, transparent)"
+        zIndex={999}
+        style={{
+          ...transitionStyles,
+          opacity: isScrolled ? 1 : 0,
+        }}
+        >
+        <HStack
+          alignSelf={"flex-start"}
+          justifyContent="space-between"
+          m="10px"
+          py="2"
+          px="4"
+          width="130vh"
+        >
+          <Text fontWeight="bold" color="gray.100">WEIDA</Text>
+          <ButtonGroup variant="link" spacing={"7"}>
+            {navData.map((item, i) => (
+              <NavbarButtons key={i} idx={i} label={item.label} link={item.link} />
+            ))}
+          </ButtonGroup>
+        </HStack>
+        </Flex>
+      ) : (
       <Box
-        color={"gray.100"}
+        display="flex"
+        height={"150px"}
+        position="fixed"
+        bottom={"0"}
+        left="0"
+        right="0"
+        bgGradient="linear(to-t, gray.900, transparent)"
+        zIndex={999}
+        style={{
+          ...transitionStyles,
+          opacity: isScrolled ? 1 : 0,
+        }}
       >
-        <Container py={{ base: "4", lg: "5" }}>
-          <HStack spacing="10" justify="space-between">
-            {/* <Image src="https://i.imgur.com/VhIvSNs.png" width={"70px"} /> */}
-            {isDesktop ? (
-              <Flex justify="space-between" flex="1">
-                <ButtonGroup variant="link" spacing="8">
-                  {navData.map((item, i) => (
-                    <Text as="a" key={i} href={item.link}>
-                      {" "}
-                      {item.label}{" "}
-                    </Text>
-                  ))}
-                </ButtonGroup>
-              </Flex>
-            ) : (
-              <>
-                <IconButton
-                  ref={btnRef}
-                  onClick={onOpen}
-                  variant="ghost"
-                  icon={<FiMenu fontSize="1.25rem" />}
-                  aria-label="Open Menu"
-                />
-                <Drawer
-                  isOpen={isOpen}
-                  placement="right"
-                  onClose={onClose}
-                  finalFocusRef={btnRef}
-                  size={"10px"}
-                >
-                  <DrawerContent>
-                    <Flex direction={"column"} pt="2vh" justify={"center"}>
-                      {navData.map((item, i) => (
-                        <Text as="a" key={i} href={item.link}>
-                          {item.label}
-                        </Text>
-                      ))}
-                    </Flex>
-                  </DrawerContent>
-                </Drawer>
-              </>
-            )} 
-          </HStack>
-        </Container>
+        <HStack
+          flex="1" 
+          alignSelf={"flex-end"}
+          justifyContent="space-between"
+          m="10px"
+          py="2"
+          px="4"
+        >
+          <ButtonGroup variant="link" spacing={"7"}>
+            {navData.map((item, i) => (
+              <NavbarButtons key={i} idx={i} label={item.label} link={item.link} />
+            ))}
+          </ButtonGroup>
+          <Button borderRadius="20px" boxSize={"2em"} onClick={() => smoothScrollTo("#main")}>
+            <ChevronUpIcon boxSize="1.5em" />
+          </Button>
+        </HStack>
       </Box>
-    </Box>
-  );
+    )}
+  </>
+  )
 }
   
