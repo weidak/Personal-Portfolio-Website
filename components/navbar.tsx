@@ -2,25 +2,14 @@ import { ChevronDownIcon, ChevronUpIcon } from "@chakra-ui/icons";
 import {
     useBreakpointValue,
     Box,
-    Container,
     HStack,
-    Stack,
-    Icon,
     Flex,
     ButtonGroup,
-    IconButton,
     Button,
-    Image,
     Text,
-    Menu,
-    MenuButton,
-    MenuList,
-    MenuItem,
-    Divider,
   } from "@chakra-ui/react";
 import { useRef, useEffect, useState } from "react";
-import { FiMenu } from "react-icons/fi";
-import { transform } from "typescript";
+import { motion, useScroll, useSpring } from "framer-motion";
 
 interface NavbarButtonsProps {
   link: string,
@@ -81,6 +70,7 @@ export default function Navbar() {
 
   // Drawer related properties
   const isDesktop = useBreakpointValue({ base: false, lg: true });
+  const { scrollYProgress } = useScroll()
 
   const navData = [
     {
@@ -124,20 +114,26 @@ export default function Navbar() {
 
   const transitionStyles: React.CSSProperties = {
     transition: "opacity 0.5s ease",
+    animation: "slide 0.5s downwards",
+    animationDelay: "1s",
   };
 
   return (
-    <>
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 1 }}
+    >
     { isDesktop ? (
         <Flex
         display="flex"
-        height={"80px"}
+        height={"60px"}
         position="fixed"
         justify="center"
         top="0"
         left="0"
         right="0"
-        bgGradient="linear(to-b, gray.900, transparent)"
+        bg="gray.900"
         zIndex={999}
         style={{
           ...transitionStyles,
@@ -152,29 +148,58 @@ export default function Navbar() {
           px="4"
           width="130vh"
         >
-          <Text fontWeight="bold" color="gray.100">WEIDA</Text>
+          <code style={{ color: "white" }}>WEIDA</code>
           <ButtonGroup variant="link" spacing={"7"}>
             {navData.map((item, i) => (
               <NavbarButtons key={i} idx={i} label={item.label} link={item.link} />
             ))}
           </ButtonGroup>
         </HStack>
+        <Box 
+          as={motion.div}
+          style={{ 
+            scaleX: scrollYProgress,
+            height: "2px",
+            background: "white",
+            transformOrigin: "left center",
+            position: "fixed",
+            left: 0,
+            right: 0,
+            top: 60,
+          }}
+          width={"100%"}
+        />        
         </Flex>
       ) : (
       <Box
         display="flex"
-        height={"150px"}
+        height={"64px"}
         position="fixed"
         bottom={"0"}
         left="0"
         right="0"
-        bgGradient="linear(to-t, gray.900, transparent)"
+        bg="gray.800"
+        boxShadow={"lg"}
         zIndex={999}
         style={{
           ...transitionStyles,
           opacity: isScrolled ? 1 : 0,
         }}
       >
+        <Box 
+          as={motion.div}
+          style={{ 
+            scaleX: scrollYProgress,
+            height: "3px",
+            background: "white",
+            transformOrigin: "left center",
+            position: "fixed",
+            left: 0,
+            right: 0,
+            bottom: 63,
+          }}
+          width={"100%"}
+        />     
         <HStack
           flex="1" 
           alignSelf={"flex-end"}
@@ -194,7 +219,7 @@ export default function Navbar() {
         </HStack>
       </Box>
     )}
-  </>
+  </motion.div>
   )
 }
   

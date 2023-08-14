@@ -105,3 +105,12 @@ a {
     color-scheme: dark;
   }
 }
+
+@keyframes slide {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}

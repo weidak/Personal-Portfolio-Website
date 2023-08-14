@@ -19,7 +19,7 @@ import {
 } from "@chakra-ui/react"
 
 import { useRef, useState, useEffect } from "react";
-import { useInView } from "framer-motion";
+import { useInView, motion, useScroll, useSpring } from "framer-motion";
 
 export default function Home() {
 
@@ -56,6 +56,8 @@ export default function Home() {
       }
   })
 
+  const { scrollYProgress } = useScroll()
+
   return (
     <Box bg={"black"}>
       <Box
@@ -63,6 +65,7 @@ export default function Home() {
         bgGradient={theme.bgGradient}
       >
         <Container maxWidth={["100%", "80%", "70%", "130vh"]}>
+
           <Navbar />
           <Flex
             alignItems={"center"}
@@ -90,3 +93,94 @@ export default function Home() {
     </Box>
   );
 }
+
+// import { motion, useScroll } from "framer-motion";
+
+// export default function Home() {
+//   const { scrollYProgress } = useScroll();
+
+//   return (
+//     <>
+//       <motion.div
+//         className="progress-bar"
+//         style={{ 
+//           scaleX: scrollYProgress,
+//           height: "300px",
+//           background: "orange",
+//           transformOrigin: "left center",
+//           position: "fixed",
+//           bottom: 0,
+//           left: 0,
+//           right: 0,
+//         }}
+//       />
+//       <h1>
+//         <code>useScroll</code> demo
+//         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates quibusdam repellat id consequuntur provident aliquam ipsam magni tempora, repellendus optio sapiente tenetur doloremque nisi dolorum illum, eos beatae accusantium? Cupiditate?</p>
+//         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates quibusdam repellat id consequuntur provident aliquam ipsam magni tempora, repellendus optio sapiente tenetur doloremque nisi dolorum illum, eos beatae accusantium? Cupiditate?</p>
+//         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates quibusdam repellat id consequuntur provident aliquam ipsam magni tempora, repellendus optio sapiente tenetur doloremque nisi dolorum illum, eos beatae accusantium? Cupiditate?</p>
+//         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates quibusdam repellat id consequuntur provident aliquam ipsam magni tempora, repellendus optio sapiente tenetur doloremque nisi dolorum illum, eos beatae accusantium? Cupiditate?</p>
+//         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates quibusdam repellat id consequuntur provident aliquam ipsam magni tempora, repellendus optio sapiente tenetur doloremque nisi dolorum illum, eos beatae accusantium? Cupiditate?</p>
+//         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates quibusdam repellat id consequuntur provident aliquam ipsam magni tempora, repellendus optio sapiente tenetur doloremque nisi dolorum illum, eos beatae accusantium? Cupiditate?</p>
+//         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates quibusdam repellat id consequuntur provident aliquam ipsam magni tempora, repellendus optio sapiente tenetur doloremque nisi dolorum illum, eos beatae accusantium? Cupiditate?</p>
+//         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates quibusdam repellat id consequuntur provident aliquam ipsam magni tempora, repellendus optio sapiente tenetur doloremque nisi dolorum illum, eos beatae accusantium? Cupiditate?</p>
+//         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates quibusdam repellat id consequuntur provident aliquam ipsam magni tempora, repellendus optio sapiente tenetur doloremque nisi dolorum illum, eos beatae accusantium? Cupiditate?</p>
+//         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates quibusdam repellat id consequuntur provident aliquam ipsam magni tempora, repellendus optio sapiente tenetur doloremque nisi dolorum illum, eos beatae accusantium? Cupiditate?</p>
+//         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates quibusdam repellat id consequuntur provident aliquam ipsam magni tempora, repellendus optio sapiente tenetur doloremque nisi dolorum illum, eos beatae accusantium? Cupiditate?</p>
+//         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates quibusdam repellat id consequuntur provident aliquam ipsam magni tempora, repellendus optio sapiente tenetur doloremque nisi dolorum illum, eos beatae accusantium? Cupiditate?</p>
+//         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates quibusdam repellat id consequuntur provident aliquam ipsam magni tempora, repellendus optio sapiente tenetur doloremque nisi dolorum illum, eos beatae accusantium? Cupiditate?</p>
+//         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates quibusdam repellat id consequuntur provident aliquam ipsam magni tempora, repellendus optio sapiente tenetur doloremque nisi dolorum illum, eos beatae accusantium? Cupiditate?</p>
+//         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates quibusdam repellat id consequuntur provident aliquam ipsam magni tempora, repellendus optio sapiente tenetur doloremque nisi dolorum illum, eos beatae accusantium? Cupiditate?</p>
+//         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates quibusdam repellat id consequuntur provident aliquam ipsam magni tempora, repellendus optio sapiente tenetur doloremque nisi dolorum illum, eos beatae accusantium? Cupiditate?</p>
+//         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates quibusdam repellat id consequuntur provident aliquam ipsam magni tempora, repellendus optio sapiente tenetur doloremque nisi dolorum illum, eos beatae accusantium? Cupiditate?</p>
+//         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates quibusdam repellat id consequuntur provident aliquam ipsam magni tempora, repellendus optio sapiente tenetur doloremque nisi dolorum illum, eos beatae accusantium? Cupiditate?</p>
+//         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates quibusdam repellat id consequuntur provident aliquam ipsam magni tempora, repellendus optio sapiente tenetur doloremque nisi dolorum illum, eos beatae accusantium? Cupiditate?</p>
+//         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates quibusdam repellat id consequuntur provident aliquam ipsam magni tempora, repellendus optio sapiente tenetur doloremque nisi dolorum illum, eos beatae accusantium? Cupiditate?</p>
+//         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates quibusdam repellat id consequuntur provident aliquam ipsam magni tempora, repellendus optio sapiente tenetur doloremque nisi dolorum illum, eos beatae accusantium? Cupiditate?</p>
+//         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates quibusdam repellat id consequuntur provident aliquam ipsam magni tempora, repellendus optio sapiente tenetur doloremque nisi dolorum illum, eos beatae accusantium? Cupiditate?</p>
+//         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates quibusdam repellat id consequuntur provident aliquam ipsam magni tempora, repellendus optio sapiente tenetur doloremque nisi dolorum illum, eos beatae accusantium? Cupiditate?</p>
+//         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates quibusdam repellat id consequuntur provident aliquam ipsam magni tempora, repellendus optio sapiente tenetur doloremque nisi dolorum illum, eos beatae accusantium? Cupiditate?</p>
+//         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates quibusdam repellat id consequuntur provident aliquam ipsam magni tempora, repellendus optio sapiente tenetur doloremque nisi dolorum illum, eos beatae accusantium? Cupiditate?</p>
+//         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates quibusdam repellat id consequuntur provident aliquam ipsam magni tempora, repellendus optio sapiente tenetur doloremque nisi dolorum illum, eos beatae accusantium? Cupiditate?</p>
+//         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates quibusdam repellat id consequuntur provident aliquam ipsam magni tempora, repellendus optio sapiente tenetur doloremque nisi dolorum illum, eos beatae accusantium? Cupiditate?</p>
+//         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates quibusdam repellat id consequuntur provident aliquam ipsam magni tempora, repellendus optio sapiente tenetur doloremque nisi dolorum illum, eos beatae accusantium? Cupiditate?</p>
+//         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates quibusdam repellat id consequuntur provident aliquam ipsam magni tempora, repellendus optio sapiente tenetur doloremque nisi dolorum illum, eos beatae accusantium? Cupiditate?</p>
+//         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates quibusdam repellat id consequuntur provident aliquam ipsam magni tempora, repellendus optio sapiente tenetur doloremque nisi dolorum illum, eos beatae accusantium? Cupiditate?</p>
+//         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates quibusdam repellat id consequuntur provident aliquam ipsam magni tempora, repellendus optio sapiente tenetur doloremque nisi dolorum illum, eos beatae accusantium? Cupiditate?</p>
+//         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates quibusdam repellat id consequuntur provident aliquam ipsam magni tempora, repellendus optio sapiente tenetur doloremque nisi dolorum illum, eos beatae accusantium? Cupiditate?</p>
+//         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates quibusdam repellat id consequuntur provident aliquam ipsam magni tempora, repellendus optio sapiente tenetur doloremque nisi dolorum illum, eos beatae accusantium? Cupiditate?</p>
+//         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates quibusdam repellat id consequuntur provident aliquam ipsam magni tempora, repellendus optio sapiente tenetur doloremque nisi dolorum illum, eos beatae accusantium? Cupiditate?</p>
+//         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates quibusdam repellat id consequuntur provident aliquam ipsam magni tempora, repellendus optio sapiente tenetur doloremque nisi dolorum illum, eos beatae accusantium? Cupiditate?</p>
+//         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates quibusdam repellat id consequuntur provident aliquam ipsam magni tempora, repellendus optio sapiente tenetur doloremque nisi dolorum illum, eos beatae accusantium? Cupiditate?</p>
+//         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates quibusdam repellat id consequuntur provident aliquam ipsam magni tempora, repellendus optio sapiente tenetur doloremque nisi dolorum illum, eos beatae accusantium? Cupiditate?</p>
+//         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates quibusdam repellat id consequuntur provident aliquam ipsam magni tempora, repellendus optio sapiente tenetur doloremque nisi dolorum illum, eos beatae accusantium? Cupiditate?</p>
+//         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates quibusdam repellat id consequuntur provident aliquam ipsam magni tempora, repellendus optio sapiente tenetur doloremque nisi dolorum illum, eos beatae accusantium? Cupiditate?</p>
+//         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates quibusdam repellat id consequuntur provident aliquam ipsam magni tempora, repellendus optio sapiente tenetur doloremque nisi dolorum illum, eos beatae accusantium? Cupiditate?</p>
+//         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates quibusdam repellat id consequuntur provident aliquam ipsam magni tempora, repellendus optio sapiente tenetur doloremque nisi dolorum illum, eos beatae accusantium? Cupiditate?</p>
+//         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates quibusdam repellat id consequuntur provident aliquam ipsam magni tempora, repellendus optio sapiente tenetur doloremque nisi dolorum illum, eos beatae accusantium? Cupiditate?</p>
+//         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates quibusdam repellat id consequuntur provident aliquam ipsam magni tempora, repellendus optio sapiente tenetur doloremque nisi dolorum illum, eos beatae accusantium? Cupiditate?</p>
+//         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates quibusdam repellat id consequuntur provident aliquam ipsam magni tempora, repellendus optio sapiente tenetur doloremque nisi dolorum illum, eos beatae accusantium? Cupiditate?</p>
+//         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates quibusdam repellat id consequuntur provident aliquam ipsam magni tempora, repellendus optio sapiente tenetur doloremque nisi dolorum illum, eos beatae accusantium? Cupiditate?</p>
+//         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates quibusdam repellat id consequuntur provident aliquam ipsam magni tempora, repellendus optio sapiente tenetur doloremque nisi dolorum illum, eos beatae accusantium? Cupiditate?</p>
+//         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates quibusdam repellat id consequuntur provident aliquam ipsam magni tempora, repellendus optio sapiente tenetur doloremque nisi dolorum illum, eos beatae accusantium? Cupiditate?</p>
+//         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates quibusdam repellat id consequuntur provident aliquam ipsam magni tempora, repellendus optio sapiente tenetur doloremque nisi dolorum illum, eos beatae accusantium? Cupiditate?</p>
+//         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates quibusdam repellat id consequuntur provident aliquam ipsam magni tempora, repellendus optio sapiente tenetur doloremque nisi dolorum illum, eos beatae accusantium? Cupiditate?</p>
+//         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates quibusdam repellat id consequuntur provident aliquam ipsam magni tempora, repellendus optio sapiente tenetur doloremque nisi dolorum illum, eos beatae accusantium? Cupiditate?</p>
+//         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates quibusdam repellat id consequuntur provident aliquam ipsam magni tempora, repellendus optio sapiente tenetur doloremque nisi dolorum illum, eos beatae accusantium? Cupiditate?</p>
+//         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates quibusdam repellat id consequuntur provident aliquam ipsam magni tempora, repellendus optio sapiente tenetur doloremque nisi dolorum illum, eos beatae accusantium? Cupiditate?</p>
+//         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates quibusdam repellat id consequuntur provident aliquam ipsam magni tempora, repellendus optio sapiente tenetur doloremque nisi dolorum illum, eos beatae accusantium? Cupiditate?</p>
+//         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates quibusdam repellat id consequuntur provident aliquam ipsam magni tempora, repellendus optio sapiente tenetur doloremque nisi dolorum illum, eos beatae accusantium? Cupiditate?</p>
+//         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates quibusdam repellat id consequuntur provident aliquam ipsam magni tempora, repellendus optio sapiente tenetur doloremque nisi dolorum illum, eos beatae accusantium? Cupiditate?</p>
+//         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates quibusdam repellat id consequuntur provident aliquam ipsam magni tempora, repellendus optio sapiente tenetur doloremque nisi dolorum illum, eos beatae accusantium? Cupiditate?</p>
+//         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates quibusdam repellat id consequuntur provident aliquam ipsam magni tempora, repellendus optio sapiente tenetur doloremque nisi dolorum illum, eos beatae accusantium? Cupiditate?</p>
+//         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates quibusdam repellat id consequuntur provident aliquam ipsam magni tempora, repellendus optio sapiente tenetur doloremque nisi dolorum illum, eos beatae accusantium? Cupiditate?</p>
+//         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates quibusdam repellat id consequuntur provident aliquam ipsam magni tempora, repellendus optio sapiente tenetur doloremque nisi dolorum illum, eos beatae accusantium? Cupiditate?</p>
+//         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates quibusdam repellat id consequuntur provident aliquam ipsam magni tempora, repellendus optio sapiente tenetur doloremque nisi dolorum illum, eos beatae accusantium? Cupiditate?</p>
+//         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates quibusdam repellat id consequuntur provident aliquam ipsam magni tempora, repellendus optio sapiente tenetur doloremque nisi dolorum illum, eos beatae accusantium? Cupiditate?</p>
+//         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates quibusdam repellat id consequuntur provident aliquam ipsam magni tempora, repellendus optio sapiente tenetur doloremque nisi dolorum illum, eos beatae accusantium? Cupiditate?</p>
+//         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates quibusdam repellat id consequuntur provident aliquam ipsam magni tempora, repellendus optio sapiente tenetur doloremque nisi dolorum illum, eos beatae accusantium? Cupiditate?</p>
+
+//       </h1>
+//     </>
+//   );
+// }
