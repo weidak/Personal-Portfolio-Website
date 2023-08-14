@@ -51,7 +51,8 @@ const NavbarButtons: React.FC<NavbarButtonsProps> = ({label, idx, link}) => {
   const smoothScrollTo = (targetId: string, offset: number) => {
     const targetElement = document.querySelector(targetId);
     if (targetElement) {
-      const offsetPosition = targetElement.offsetTop - offset; // This error can be ignored
+      const targetRect = targetElement.getBoundingClientRect()
+      const offsetPosition = targetRect.top + window.scrollY - offset;
       window.scrollTo({
         top: offsetPosition,
         behavior: "smooth",
@@ -99,8 +100,9 @@ export default function Navbar() {
   const smoothScrollTo = (targetId: string) => {
     const targetElement = document.querySelector(targetId);
     if (targetElement) {
+      const targetRect = targetElement.getBoundingClientRect()
       window.scrollTo({
-        top: targetElement.offsetTop,
+        top: targetRect.top + window.scrollY,
         behavior: "smooth",
       });
       console.log("Scrolling to " + targetId)
