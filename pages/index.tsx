@@ -4,6 +4,7 @@ import Introduction from "@/components/introduction";
 import SkillSet from "@/components/skillsets";
 import Experience from "@/components/experience";
 import Projects from "@/components/projects";
+import Navbar from "@/components/navbar";
 import { 
   Box, 
   Text, 
@@ -56,12 +57,13 @@ export default function Home() {
   })
 
   return (
-    <>
+    <Box bg={"black"}>
       <Box
         id="main"
         bgGradient={theme.bgGradient}
       >
         <Container maxWidth={["100%", "80%", "70%", "130vh"]}>
+          <Navbar />
           <Flex
             alignItems={"center"}
             justify={"center"}
@@ -78,15 +80,13 @@ export default function Home() {
             <About theme={theme}/>
             <SkillSet ref={aboutRef} theme={theme}/>
             <Center><Divider mt="10" orientation="horizontal"/></Center>
-            <ScaleFade in={experienceRefInView}>
-                <Experience theme={theme} ref={experienceRef} />
-            </ScaleFade>
-              <Projects theme={theme} />
-              <Box boxSize="xxs"><Text fontSize="10" color={theme.fontColor} align={'center'} mb='10vh'>This website was built by me in 2023 using NextJS and ChakraUI.</Text></Box>
+            <Experience theme={theme} ref={experienceRef} />
+            <Projects theme={theme} />
+            <Box boxSize="xxs"><Text fontSize="10" color={theme.fontColor} align={'center'} mb='10vh'>This website was built by me in 2023 using NextJS and ChakraUI.</Text></Box>
             </Stack>
           </Flex>
         </Container>
       </Box>
-    </>
+    </Box>
   );
 }

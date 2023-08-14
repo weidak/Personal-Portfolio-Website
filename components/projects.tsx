@@ -64,7 +64,7 @@ const Projects: React.FC<ProjectsProps> = ({ theme }) => {
 
 
     return (
-        <Box alignSelf={"center"} mb="20vh" alignItems="center" margin={theme.containerPadding}>
+        <Box as="section" id="projects" alignSelf={"center"} mb="20vh" alignItems="center" margin={theme.containerPadding}>
             <Flex justify={"center"} pb="2vh">
                 <Heading as="u" color={theme.fontColor}>
                     Projects

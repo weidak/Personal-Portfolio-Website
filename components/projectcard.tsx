@@ -33,7 +33,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ theme, title, description, te
 
     const cardStyle: React.CSSProperties = {
       transition: 'transform 0.3s ease',
-      cursor: '',
+      cursor: 'pointer',
       transform: isHovered ? 'scale(1.05)' : 'scale(1)',
     }
 
@@ -53,6 +53,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ theme, title, description, te
       style={cardStyle}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
+      zIndex={2}
       >
         {/* Inner Card */}
         <Flex 
