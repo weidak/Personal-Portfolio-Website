@@ -51,14 +51,14 @@ const Experience: ForwardRefRenderFunction<HTMLDivElement, ExperienceProps> = ({
 
   return (
     <Box id="work" as="section" ref={ref} alignSelf={"center"} alignItems="center" m={theme.containerMargins} >
-        <Box maxHeight="100%" background="0" color={fontColor} alignItems={"center"}>
+        <Box background="0" color={fontColor} alignItems={"center"}>
             <Flex pb={"35px"} justify={"center"}>
                 <Text fontSize="2em" fontWeight="bold" pb=".5rem" as="u">
                     {timelineTitle}
                 </Text>
             </Flex>
             <Flex ps="26px" pe="0px" mb="31px" position="relative">
-                <Flex direction="column" display='flex' flex='1'>
+                <Flex direction="column">
                 {timelineData.map((row, index, arr) => (
                     <TimelineRow
                     key={index}

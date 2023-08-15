@@ -28,7 +28,7 @@ const TimelineRow: React.FC<TimelineRowProps> = ({ logo, company, date, color, i
     }, [])
 
     return (
-        <Flex alignItems='flex-start' justifyContent='start' mb='5px' flex='1'>
+        <Flex alignItems='flex-start' justifyContent='start' mb='5px'>
             <Flex direction='column'>
                 <Icon
                     as={logo}
@@ -42,7 +42,7 @@ const TimelineRow: React.FC<TimelineRowProps> = ({ logo, company, date, color, i
                     left={documentDir === 'rtl' ? undefined : '-13px'}
                 />
                 {/* This is the divider that needs to stretch to 100% of the remaining vertical space. */}
-                <Box w='2px' bg='orange.400' flexGrow='1' height={ index === arrLength - 1 ? 0 : '100%'}/>
+                <Box w='2px' bg='orange.400' height={ index === arrLength - 1 ? 0 : '100%'}/>
             </Flex>
             <Flex direction='column' justifyContent='flex-start'>
                 <Text fontSize='lg' color={fontColor} fontWeight='bold'>

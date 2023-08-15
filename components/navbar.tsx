@@ -119,11 +119,7 @@ export default function Navbar() {
   };
 
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 1 }}
-    >
+    <>
     { isDesktop ? (
         <Flex
         display="flex"
@@ -219,7 +215,7 @@ export default function Navbar() {
         </HStack>
       </Box>
     )}
-  </motion.div>
+  </>
   )
 }
   
