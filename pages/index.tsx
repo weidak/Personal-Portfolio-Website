@@ -39,11 +39,6 @@ export default function Home() {
     containerMargins: '10px'
   }
 
-
-  useEffect(() => {
-    console.log('element in view!', aboutRefInView);
-  })
-
   return (
     <Box bg={"black"}>
       <Box

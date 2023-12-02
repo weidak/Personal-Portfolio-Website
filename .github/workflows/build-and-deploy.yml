@@ -1,7 +1,5 @@
 # This serves as a placeholder template for container-hosting services instead of github pages. 
 
-# CAN BE IGNORED
-
 name: Build and deploy using Docker 
 
 on:

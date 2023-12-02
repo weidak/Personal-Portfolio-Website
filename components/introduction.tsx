@@ -6,8 +6,8 @@ interface IntroductionProps {
 
 const Introduction: React.FC<IntroductionProps> = ({ theme }) => {
   const hello = "Hello, I'm Weida";
-  const caption = "A final year Computer Engineering student at the National University of Singapore.";
-  const displayPic = "https://i.imgur.com/gKJSU0D.png";
+  const caption = "An aspiring Software Engineer from the National University of Singapore.";
+  const displayPic = "/hero/hero_avatar.png"
 
   return (
     <Box as="section" h="100vh" alignItems="center" display="flex" justifyContent="center" p={theme.containerMargins}>

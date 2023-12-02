@@ -17,22 +17,22 @@ const SkillSet: ForwardRefRenderFunction<HTMLDivElement, SkillSetProps> = ({ the
       skills: ['Java', 'Python', 'C/C++']
     },
     {
-      title: 'Web Development',
+      title: 'Web',
       logo: BsGlobeAmericas,
       color: 'blue.400',
-      skills: ['ReactJS/Typescript', 'VueJS, Firebase', 'Django']
+      skills: ['Typescript with ExpressJS', 'VueJS with Firebase', 'Django']
     },
     {
-      title: 'Cloud (Training)',
+      title: 'Cloud',
       logo: BsFillCloudFill,
       color: 'white.400',
-      skills: ['Architecting on AWS', 'Developing on AWS']
+      skills: ['CI/CD of Web Applications', 'AWS Services']
     },
     {
-      title: 'Data Engineering',
+      title: 'Data',
       logo: BsDatabaseFill,
       color: 'yellow.400',
-      skills: ['Apache Airflow Fundamentals', 'DAG Authoring for Apache Airflow']
+      skills: ['Apache Airflow', 'Hadoop', 'Apache Spark']
     },
     {
       title: 'Others',
@@ -44,11 +44,11 @@ const SkillSet: ForwardRefRenderFunction<HTMLDivElement, SkillSetProps> = ({ the
 
   return (
     <Box as="section" id="skillsets" color={theme.fontColor} ref={ref} m={theme.containerMargins}>
-      <Flex justify="center">
+      <Flex justify="center" flexDir={"column"}>
+        <Heading as="u" size="lg" mb="10">
+              What I have learnt
+        </Heading>
         <Stack align="center">
-          <Heading as="u" size="lg" mb="10">
-            What I can do
-          </Heading>
           <Stack flexDir={['column', 'column', 'column', 'row']}>
           {skillsets.map((category, idx) => (
             <Container key={idx} mt="2vh">

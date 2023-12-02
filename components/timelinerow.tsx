@@ -1,9 +1,9 @@
-import { Flex, Text, Box, Icon, UnorderedList, ListItem} from "@chakra-ui/react";
+import { Flex, Text, Box, Icon, UnorderedList, ListItem, Image, Center } from "@chakra-ui/react";
 import { useEffect, useState } from "react"; 
 import { IconType } from "react-icons";
 
 interface TimelineRowProps {
-    logo: IconType;
+    logo: string;
     company: string;
     date: string;
     color: string;
@@ -28,21 +28,16 @@ const TimelineRow: React.FC<TimelineRowProps> = ({ logo, company, date, color, i
     }, [])
 
     return (
-        <Flex alignItems='flex-start' justifyContent='start' mb='5px'>
-            <Flex direction='column'>
-                <Icon
-                    as={logo}
-                    color={color}
-                    h={'40px'}
-                    w={'35px'}
-                    pe='6px'
-                    zIndex='1'
-                    position='relative'
-                    right={documentDir === 'rtl' ? '-13px' : undefined}
-                    left={documentDir === 'rtl' ? undefined : '-13px'}
-                />
-                {/* This is the divider that needs to stretch to 100% of the remaining vertical space. */}
-                <Box w='2px' bg='orange.400' height={ index === arrLength - 1 ? 0 : '100%'}/>
+        <Flex alignItems='flex-start' justifyContent='start' mb='5vh' direction={['column', 'row']}>
+            <Flex m="8px" mr="25px">
+                <Center w={'70px'} overflow="hidden" rounded={"lg"} boxShadow={"xl"}>
+                    <Image
+                        src={logo}
+                        color={color}
+                        h={'100%'}
+                        w={'100%'}
+                    />
+                </Center>
             </Flex>
             <Flex direction='column' justifyContent='flex-start'>
                 <Text fontSize='lg' color={fontColor} fontWeight='bold'>
@@ -60,7 +55,7 @@ const TimelineRow: React.FC<TimelineRowProps> = ({ logo, company, date, color, i
                     </Text>
                     <UnorderedList>
                         {description.details.map((content, idx) => (
-                            <ListItem key={idx}>{content}</ListItem>
+                            <ListItem key={idx} textAlign={"justify"}>{content}</ListItem>
                         ))}
                     </UnorderedList>
                 </Box>
