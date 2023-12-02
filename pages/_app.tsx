@@ -7,7 +7,7 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <ChakraProvider>
       <Head>
-        <title>Weida's Portfolio Website</title>
+        <title>Weida&apos;s Portfolio Website</title>
         <meta name="description" content="Weida's Portfolio Website" />
         <link rel="icon" href="/duck.svg" />
       </Head>
