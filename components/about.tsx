@@ -43,7 +43,7 @@ const About: ForwardRefRenderFunction<HTMLDivElement, AboutProps> = (
       m={theme.containerMargins}
     >
       <Flex justify="center">
-        <Stack direction={"column"}>
+        <Stack direction={"column"} align={"center"}>
           <Heading as="u" size="lg" mb="10">
             About myself
           </Heading>

@@ -1,21 +1,9 @@
 import {
-  Card,
-  CardHeader,
   Flex,
   Text,
-  CardBody,
-  useColorModeValue,
   Box,
-  Icon,
-  VStack,
-  Stack,
 } from "@chakra-ui/react";
-import { AddIcon, ChatIcon, DownloadIcon, CheckIcon } from "@chakra-ui/icons";
-import { LiaUniversitySolid, LiaBookSolid } from "react-icons/lia";
-import { SiAutodesk } from "react-icons/si";
-import { BsPersonWorkspace } from "react-icons/bs";
 import { forwardRef, ForwardRefRenderFunction } from "react";
-import { IconType } from "react-icons";
 import TimelineRow from "./timelinerow";
 
 interface ExperienceProps {
@@ -75,7 +63,7 @@ const Experience: ForwardRefRenderFunction<HTMLDivElement, ExperienceProps> = (
       m={theme.containerMargins}
     >
       <Box background="0" color={fontColor} alignItems={"center"}>
-        <Flex pb={"35px"}>
+        <Flex pb={"35px"} justify={"center"}>
           <Text fontSize="2em" fontWeight="bold" pb=".5rem" as="u">
             {timelineTitle}
           </Text>

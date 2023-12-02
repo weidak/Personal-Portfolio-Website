@@ -44,7 +44,7 @@ const SkillSet: ForwardRefRenderFunction<HTMLDivElement, SkillSetProps> = ({ the
 
   return (
     <Box as="section" id="skillsets" color={theme.fontColor} ref={ref} m={theme.containerMargins}>
-      <Flex justify="center" flexDir={"column"}>
+      <Flex justify="center" flexDir={"column"} align={"center"}>
         <Heading as="u" size="lg" mb="10">
               What I have learnt
         </Heading>
