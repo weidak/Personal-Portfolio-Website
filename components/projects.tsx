@@ -11,7 +11,7 @@ const Projects: React.FC<ProjectsProps> = ({ theme }) => {
     {
         title: "PeerPrep",
         image: "https://github.com/weidak/weidak.github.io/assets/70256674/23520d58-20ad-46f6-9406-a926dce0c772",
-        url: "https://github.com/CS3219-AY2324S1/ay2324s1-course-assessment-g05",
+        url: "https://docs.google.com/document/d/1MjErasW3rWlBZkXqcsq3O6evHv03M2FJB2o3rro0vL8/edit?usp=sharing",
         description: "This project is a real-time, collaborative website that allows users to code together. It is built on a microservices architecture using NextJS, ExpressJS, Socket.IO, RabbitMQ, Redis, PostgreSQL and deployed on AWS.",
         techStack: ["nextjs", "express", "rabbitmq", "redis", "postgresql"]
     },
