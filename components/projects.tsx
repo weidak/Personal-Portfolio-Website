@@ -9,13 +9,26 @@ interface ProjectsProps {
 const Projects: React.FC<ProjectsProps> = ({ theme }) => {
   const projects = [
     {
+        title: "PeerPrep",
+        image: "https://github.com/weidak/weidak.github.io/assets/70256674/23520d58-20ad-46f6-9406-a926dce0c772",
+        url: "https://github.com/CS3219-AY2324S1/ay2324s1-course-assessment-g05",
+        description: "This project is a real-time, collaborative website that allows users to code together. It is built on a microservices architecture using NextJS, ExpressJS, Socket.IO, RabbitMQ, Redis, PostgreSQL and deployed on AWS.",
+        techStack: ["nextjs", "express", "rabbitmq", "redis", "postgresql"]
+    },
+    {
+        title: "Capstone Project",
+        image: "https://github.com/weidak/weidak.github.io/assets/70256674/77be63f9-bc1d-4697-882e-e3f04e52b736",
+        url: "https://github.com/nus-cg4002-group-4/MonkeysLaserTag",
+        description: "This project aimed to showcase what we have learnt over the last 4 years. We were tasked to create a laser tag game with various IoT devices that uses a HiveMQTT broker.",
+        techStack: ["python", "arduino"]
+    },
+    {
       title: "ICT+",
       image:
         "https://user-images.githubusercontent.com/70256674/253813924-09924562-f040-4444-aa6c-0cbc72490b0f.png",
       url: "https://github.com/tlyi/ictplus",
       description:
-        "Handling your ICT administration in a more intuitive manner and prepare your personal equipmentwith ease",
-      linkIcon: AiOutlineLink,
+        "Handling your ICT administration in a more intuitive manner and prepare your personal equipment with ease",
       techStack: ["flutter"],
     },
     {
@@ -24,7 +37,6 @@ const Projects: React.FC<ProjectsProps> = ({ theme }) => {
       url: "https://github.com/chang-yichen/FoodLeh",
       description:
         "Our aim is to provide a centralised platform for small F&B owners/cloud kitchen facility a POS such that they can dispatch the orders through a web application.",
-      linkIcon: AiOutlineLink,
       techStack: ["vue", "firebase"],
     },
     {
@@ -34,7 +46,6 @@ const Projects: React.FC<ProjectsProps> = ({ theme }) => {
       url: "https://ay2122s1-cs2113t-f14-2.github.io/tp/",
       description:
         "Fitbot is a desktop app that helps to keep track of calorie consumption and calorie output with the speed and convenience of command-line based tools.",
-      linkIcon: AiOutlineLink,
       techStack: ["java"],
     },
     {
@@ -44,7 +55,6 @@ const Projects: React.FC<ProjectsProps> = ({ theme }) => {
       url: "https://ke7web.netlify.app/",
       description:
         "This portal was intended for hall residents to book, organize and plan events through a web application, built on ReactJS & PostgreSQL",
-      linkIcon: AiOutlineLink,
       techStack: ["react", "postgresql"],
     },
     {
@@ -54,7 +64,6 @@ const Projects: React.FC<ProjectsProps> = ({ theme }) => {
       url: "https://github.com/weidak/FPGA-Project-EE2026",
       description:
         "Created a Sight and Sound Entertainment System using a Basys 3 Development Board with audio input from PmodMIC3 and visual output from PmodOLEDrgb.",
-      linkIcon: AiOutlineLink,
       techStack: ["verilog"],
     },
     {
@@ -64,7 +73,6 @@ const Projects: React.FC<ProjectsProps> = ({ theme }) => {
       url: "https://github.com/weidak/RTOS-Project-CG2271",
       description:
         "This project was to design a robotic vehicle that is piloted through an Android application. Learned scheduling algorithms, multi-threading, resource locking and more.",
-      linkIcon: AiOutlineLink,
       techStack: ["c-plusplus"],
     },
   ];

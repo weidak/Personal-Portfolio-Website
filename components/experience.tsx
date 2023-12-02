@@ -39,7 +39,7 @@ const Experience: ForwardRefRenderFunction<HTMLDivElement, ExperienceProps> = (
         overview:
           "Developed on internal services that support Autodesk’s product usage data through the integration and maintenance of data pipelines that employ numerous Amazon Web Services (AWS) and Apache services.",
         details: [
-          "Upgraded the backend APIs of existing Python and Java frameworks and underwent AWS trainings provided by the company",
+          "Upgraded the backend APIs of existing Python and Java frameworks and underwent AWS trainings provided by the company.",
           "Utilized Apache Airflow to update functionality and orchestrate ETL pipelines, improving user experience on existing services.",
           "Performed quality assurance through implementing automated test projects for services provided by the team. ",
           "Collaborated with team members closely using the AGILE framework to ensure Epics and Sprints were met.",
